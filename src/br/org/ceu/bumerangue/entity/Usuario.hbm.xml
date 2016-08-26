@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.org.ceu.bumerangue.entity">
+
+	<class name="Usuario" table="BMG_USUARIO" polymorphism="implicit" discriminator-value="US">
+
+		<id name="id" column="ID">
+			<generator class="uuid" />
+		</id>
+
+		<discriminator column="TIPO_USUARIO" type="string" />
+
+		<property name="nome" column="NOME" unique="true" />
+		<property name="nomeCompleto" column="NOME_COMPLETO" />
+		<property name="senha" column="SENHA" />
+		<property name="email" column="EMAIL" />
+		<property name="telefone" column="TELEFONE" />
+		<property name="ativo" column="ATIVO" />
+		<property name="bloqueado" column="BLOQUEADO" />
+		<property name="numeroTentativasErradas" column="NUMERO_TENTATIVAS_ERRADAS" />
+
+		<!-- atributos de auditoria -->
+		<property name="dataCriacao" column="DATA_CRIACAO"/>
+		<many-to-one name="usuarioCriacao" cascade="none" column="ID_USUARIO_CRIACAO" />
+		<property name="ipCriacao" column="IP_CRIACAO"/>
+		<property name="dataUltimaAlteracao" column="DATA_ULTIMA_ALTERACAO"/>
+		<many-to-one name="usuarioUltimaAlteracao" cascade="none" column="ID_USUARIO_ULTIMA_ALTERACAO"/>
+		<property name="ipUltimaAlteracao" column="IP_ULTIMA_ALTERACAO"/>
+
+		<!-- Usuario(*) -> (*)Permissao -->
+		<!-- @! O atributo 'inverse' deve ser 'false' nos dois lados (Permission e User), 
+		   -    -> http://www.jspbrasil.com.br/jsp/tutoriais/tutorial.jsp?idTutorial=003_004 
+		   -    "...Em outros relacionamentos n-n, pode ser que seja necessário inserir/atualizar 
+		   -     o relacionamento na tabela de relacionamento durante a inserção/atualização 
+		   -     de qualquer um dos lados das entidades, portanto, basta que o atributo inverse 
+		   -     nas duas coleções seja mapeado como false."
+		  -->
+		<bag name="permissoes" table="BMG_PERMISSAO_USUARIO" inverse="false" cascade="save-update" lazy="false">
+			<key column="ID_USUARIO" />
+			<many-to-many class="Permissao" column="ID_PERMISSAO" />
+		</bag>
+
+		<subclass name="Centro" discriminator-value="CT">
+		</subclass>
+
+		<subclass name="UsuarioBibliotecaCultural" discriminator-value="BC">
+		</subclass>
+
+		<subclass name="UsuarioFilmeComercial" discriminator-value="FC">
+		</subclass>
+
+		<subclass name="UsuarioFichaMissa" discriminator-value="FM">
+		</subclass>
+
+	</class>
+
+</hibernate-mapping>

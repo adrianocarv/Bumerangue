@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.org.ceu.bumerangue.entity">
+
+	<class name="ComponenteMissa" table="BMG_COMPONENTE_MISSA" polymorphism="implicit" discriminator-value="CM">
+
+		<id name="id" column="ID">
+			<generator class="uuid" />
+		</id>
+
+		<discriminator column="TIPO" type="string" />
+
+		<property name="textoLatim" column="TEXTO_LATIM" />
+
+ 		<bag name="referenciasMissais" cascade="save-update" lazy="false">
+ 			<key column="ID_COMPONENTE_MISSA" />
+ 			<one-to-many class="ReferenciaMissal"/>
+ 		</bag> 				
+
+		<!-- atributos de auditoria -->
+		<property name="dataCriacao" column="DATA_CRIACAO"/>
+		<many-to-one name="usuarioCriacao" cascade="none" column="ID_USUARIO_CRIACAO" />
+		<property name="ipCriacao" column="IP_CRIACAO"/>
+		<property name="dataUltimaAlteracao" column="DATA_ULTIMA_ALTERACAO"/>
+		<many-to-one name="usuarioUltimaAlteracao" cascade="none" column="ID_USUARIO_ULTIMA_ALTERACAO"/>
+		<property name="ipUltimaAlteracao" column="IP_ULTIMA_ALTERACAO"/>
+
+		<subclass name="Introito" discriminator-value="IT">
+		</subclass>
+
+		<subclass name="Prefacio" discriminator-value="PF">
+			<property name="proprio" column="PROPRIO" />
+			<property name="compartilhado" column="COMPARTILHADO" />
+			<property name="descricao" column="DESCRICAO" />
+			<many-to-one name="prefacioCompartilhado" cascade="none" column="ID_PREFACIO_COMPARTILHADO"/>
+		</subclass>
+
+		<subclass name="AntifonaComunhao" discriminator-value="AC">
+		</subclass>
+
+		<subclass name="Leitura1" discriminator-value="L1">
+		</subclass>
+
+		<subclass name="SalmoResponsorial" discriminator-value="SR">
+		</subclass>
+
+		<subclass name="Leitura2" discriminator-value="L2">
+		</subclass>
+
+		<subclass name="AclamacaoEvangelho" discriminator-value="AE">
+		</subclass>
+
+		<subclass name="Evangelho" discriminator-value="EV">
+		</subclass>
+
+	</class>
+
+</hibernate-mapping>

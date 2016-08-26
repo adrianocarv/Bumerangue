@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.org.ceu.bumerangue.entity">
+
+	<class name="ElementoDominio" table="BMG_ELEMENTO_DOMINIO" >
+
+		<id name="id" column="ID">
+			<generator class="uuid" />
+		</id>
+
+		<property name="codigo" column="CODIGO" />
+		<property name="descricao" column="DESCRICAO" />
+		<property name="foraUso" column="FORA_USO" />
+		<property name="personalizado1" column="PERSONALIZADO_1" />
+		<many-to-one name="personalizado2" column="PERSONALIZADO_2" cascade="none"></many-to-one>
+		<property name="personalizado3" column="PERSONALIZADO_3" />
+
+		<many-to-one name="dominio" column="ID_DOMINIO" cascade="none" />
+
+	</class>
+
+</hibernate-mapping>
