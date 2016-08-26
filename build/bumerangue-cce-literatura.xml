@@ -1,0 +1,18 @@
+<Context 
+	displayName="bumerangue-cce-literatura"
+	docBase="bumerangue-cce-literatura"
+	path="/bumerangue-cce-literatura"
+	workDir="work\Catalina\localhost\bumerangue-cce-literatura"
+	>
+
+	<Realm className="org.apache.catalina.realm.JDBCRealm" debug="99"
+		driverName="com.mysql.jdbc.Driver"
+		connectionName="bumerangue"
+		connectionPassword=""
+		connectionURL="jdbc:mysql://192.241.180.208:3306/bumerangue_cce_literatura"
+		userTable="BMG_USUARIO" userNameCol="NOME" userCredCol="SENHA"
+		userRoleTable="bmg_permissao_usuario_view" roleNameCol="nome_permissao"
+		digest="MD5"
+	/>
+
+</Context>

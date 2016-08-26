@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project name="Bumerangue" default="build-all">
+
+	<!-- Propriedades -->
+	<property name="web" location="../WebContent" />
+	<property name="config.path" location="${web}/WEB-INF/config/resources" />
+	<property name="dist" location="../dist" />
+
+	<property name="ftp-server" value="192.241.180.208" />
+	<property name="ftp-port" value="25800" />
+	<property name="ftp-userid" value="adrianocarv" />
+	<property name="ftp-password" value="@a8859662" />
+	<property name="ftp-remotedir" value="/home/adrianocarv/bumerangue-deploy" />
+
+	<!-- Build do aplicativo -->
+	<target name="build-all" depends="build-ceus, build-cce-circulante, build-cce-literatura" />
+
+	<target name="build-ceus">
+		<copy file="${config.path}/bumerangue-config-ceus.properties" tofile="${config.path}/bumerangue-config.properties" overwrite="true" />
+		<war destfile="${dist}/bumerangue-ceus.war" webxml="${web}/WEB-INF/web.xml" basedir="${web}" />
+		<tar destfile="${dist}/bumerangue-ceus.tar"
+		     basedir="${web}"
+		     excludes="WEB-INF/lib/**"
+		/>
+		<gzip destfile="${dist}/bumerangue-ceus.tar.gz" src="${dist}/bumerangue-ceus.tar"/>
+		<delete file="${dist}/bumerangue-ceus.tar"/>
+	</target>
+	
+	<target name="build-cce-circulante">
+		<copy file="${config.path}/bumerangue-config-cce-circulante.properties" tofile="${config.path}/bumerangue-config.properties" overwrite="true" />
+		<war destfile="${dist}/bumerangue-cce-circulante.war" webxml="${web}/WEB-INF/web.xml" basedir="${web}" />
+		<tar destfile="${dist}/bumerangue-cce-circulante.tar"
+		     basedir="${web}"
+		     excludes="WEB-INF/lib/**"
+		/>
+		<gzip destfile="${dist}/bumerangue-cce-circulante.tar.gz" src="${dist}/bumerangue-cce-circulante.tar"/>
+		<delete file="${dist}/bumerangue-cce-circulante.tar"/>
+	</target>
+	
+	<target name="build-cce-literatura">
+		<copy file="${config.path}/bumerangue-config-cce-literatura.properties" tofile="${config.path}/bumerangue-config.properties" overwrite="true" />
+		<war destfile="${dist}/bumerangue-cce-literatura.war" webxml="${web}/WEB-INF/web.xml" basedir="${web}" />
+		<tar destfile="${dist}/bumerangue-cce-literatura.tar"
+		     basedir="${web}"
+		     excludes="WEB-INF/lib/**"
+		/>
+		<gzip destfile="${dist}/bumerangue-cce-literatura.tar.gz" src="${dist}/bumerangue-cce-literatura.tar"/>
+		<delete file="${dist}/bumerangue-cce-literatura.tar"/>
+	</target>
+	
+	<!-- Deploy para Produção -->
+	<target name="deploy-producao-all" depends="deploy-producao-ceus, deploy-producao-cce-circulante, deploy-producao-cce-literatura" />
+
+	<target name="deploy-producao-ceus" depends="build-ceus" >
+		<scp todir="${ftp-userid}@${ftp-server}:${ftp-remotedir}" port="${ftp-port}" password="${ftp-password}" trust="true">
+			<fileset file="${dist}/bumerangue-ceus.tar.gz" />
+		</scp>
+	</target>
+
+	<target name="deploy-producao-cce-circulante" depends="build-cce-circulante" >
+		<scp todir="${ftp-userid}@${ftp-server}:${ftp-remotedir}" port="${ftp-port}" password="${ftp-password}" trust="true">
+			<fileset file="${dist}/bumerangue-cce-circulante.tar.gz" />
+		</scp>
+	</target>
+
+	<target name="deploy-producao-cce-literatura" depends="build-cce-literatura" >
+		<scp todir="${ftp-userid}@${ftp-server}:${ftp-remotedir}" port="${ftp-port}" password="${ftp-password}" trust="true">
+		  	<fileset file="${dist}/bumerangue-cce-literatura.tar.gz" />
+		</scp>
+	</target>
+
+</project>

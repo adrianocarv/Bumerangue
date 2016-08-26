@@ -1,0 +1,18 @@
+<Context 
+	displayName="bumerangue-ceus"
+	docBase="bumerangue-ceus"
+	path="/bumerangue-ceus"
+	workDir="work\Catalina\localhost\bumerangue-ceus"
+	>
+
+	<Realm className="org.apache.catalina.realm.JDBCRealm" debug="99"
+		driverName="com.mysql.jdbc.Driver"
+		connectionName="bumerangue"
+		connectionPassword=""
+		connectionURL="jdbc:mysql://192.241.180.208:3306/bumerangue_ceus"
+		userTable="BMG_USUARIO" userNameCol="NOME" userCredCol="SENHA"
+		userRoleTable="bmg_permissao_usuario_view" roleNameCol="nome_permissao"
+		digest="MD5"
+	/>
+
+</Context>
