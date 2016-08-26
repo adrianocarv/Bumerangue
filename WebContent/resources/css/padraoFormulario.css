@@ -1,0 +1,134 @@
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #5B5B5B;
+}
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #5B5B5B;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #205127;
+}
+input {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	border: 1px solid #999999;
+}
+textarea {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	border: 1px solid #999999;
+}
+select {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	border: 1px solid #999999;
+}
+.menuHFundo {
+	background-image: url(../img/bk-h-menu.jpg);
+	background-repeat: no-repeat;
+}
+.menuHBranco {
+	color: #FFFFFF;
+	font-size: 10px;
+}
+.menuHLegenda {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-style: italic;
+}
+.menuVFonte {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.botao {
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	background-color: #236930;
+	border: 1px solid #4872B8;
+}
+.textoNegrito {
+	font-weight: bold;
+}
+.truqueLink {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #5B5B5B;
+	text-decoration:underline
+}
+.truqueLinkNegrito {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #5B5B5B;
+	font-weight: bold;
+	text-decoration:underline
+}
+.semLink {
+	text-decoration: none;
+	font-style: italic;
+}
+.campoFora {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	border: 1px solid #999999;
+	background-color: #F1F5F2;
+}
+.tabelaForm {
+	width: 650px;
+	border: 0px;
+}
+.tabelaFormFundo {
+	width: 650px;
+	border: 10px;
+	background-color: #C0C6C1;
+}
+.tabelaFormFaixa {
+	width: 100%;
+}
+.linhaFundo {
+	background-color: #E7F4EA;
+}
+.linhaFundoTitulo {
+	background-color:#D4E1D7;
+	font-weight: bold;
+	font-size: 10px;
+	color: #5B5B5B;
+	text-align: left;
+}
+.linhaFundoTituloSemNegrito {
+	background-color:#D4E1D7;
+}
+.linhaFaixa {
+	font-size: 11px;
+	font-weight: bold;
+	background-color:#DAE3F1;
+}
+.linhaBotao {
+	text-align: center;
+}
+.semBorda {
+	border: none;
+}
+.displayCaption{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #5B5B5B;
+	text-align: left;
+	font-weight: bold;
+}
+.alternaTemplate {
+	color: #FFFFFF;
+}
