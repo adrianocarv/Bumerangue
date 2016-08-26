@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.org.ceu.bumerangue.entity">
+
+	<class name="ReferenciaMissal" table="BMG_REFERENCIA_MISSAL" >
+
+		<id name="id" column="ID">
+			<generator class="uuid" />
+		</id>
+
+		<property name="texto" column="TEXTO"/>
+		<property name="pagina" column="PAGINA"/>
+		<many-to-one name="edicaoIdioma" column="EDICAO_IDIOMA" cascade="none" ></many-to-one>
+		<property name="enderecoEscrituras" column="ENDERECO_ESCRITURAS"/>
+		<many-to-one name="componenteMissa" column="ID_COMPONENTE_MISSA" cascade="none" ></many-to-one>
+
+		<!-- atributos de auditoria -->
+		<property name="dataCriacao" column="DATA_CRIACAO"/>
+		<many-to-one name="usuarioCriacao" cascade="none" column="ID_USUARIO_CRIACAO" />
+		<property name="ipCriacao" column="IP_CRIACAO"/>
+		<property name="dataUltimaAlteracao" column="DATA_ULTIMA_ALTERACAO"/>
+		<many-to-one name="usuarioUltimaAlteracao" cascade="none" column="ID_USUARIO_ULTIMA_ALTERACAO"/>
+		<property name="ipUltimaAlteracao" column="IP_ULTIMA_ALTERACAO"/>
+
+	</class>
+
+</hibernate-mapping>

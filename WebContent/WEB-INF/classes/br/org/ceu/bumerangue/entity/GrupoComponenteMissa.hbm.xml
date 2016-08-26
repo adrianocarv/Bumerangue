@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.org.ceu.bumerangue.entity">
+
+	<class name="GrupoComponenteMissa" table="BMG_GRUPO_COMPONENTE_MISSA" polymorphism="implicit" discriminator-value="GC">
+
+		<id name="id" column="ID">
+			<generator class="uuid" />
+		</id>
+
+		<discriminator column="TIPO" type="string" />
+
+		<property name="chave" column="CHAVE" />
+		<property name="descricaoChave" column="DESCRICAO_CHAVE" />
+		<many-to-one name="festaMovel" cascade="none" column="ID_FESTA_MOVEL"/>
+
+		<!-- atributos de auditoria -->
+		<property name="dataCriacao" column="DATA_CRIACAO"/>
+		<many-to-one name="usuarioCriacao" cascade="none" column="ID_USUARIO_CRIACAO" />
+		<property name="ipCriacao" column="IP_CRIACAO"/>
+		<property name="dataUltimaAlteracao" column="DATA_ULTIMA_ALTERACAO"/>
+		<many-to-one name="usuarioUltimaAlteracao" cascade="none" column="ID_USUARIO_ULTIMA_ALTERACAO"/>
+		<property name="ipUltimaAlteracao" column="IP_ULTIMA_ALTERACAO"/>
+
+		<subclass name="LiturgiaPalavra" discriminator-value="LP">
+
+		 	<many-to-one name="leitura1" column="ID_LEITURA_1" cascade="save-update"></many-to-one>
+		 	<many-to-one name="salmoResponsorial" column="ID_SALMO_RESPONSORIAL" cascade="save-update"></many-to-one>
+		 	<many-to-one name="leitura2" column="ID_LEITURA_2" cascade="save-update"></many-to-one>
+		 	<many-to-one name="aclamacaoEvangelho" column="ID_ACLAMACAO_EVANGELHO" cascade="save-update"></many-to-one>
+		 	<many-to-one name="evangelho" column="ID_EVANGELHO" cascade="save-update"></many-to-one>
+
+		</subclass>
+
+		<subclass name="Oracao" discriminator-value="OR">
+
+		 	<many-to-one name="introito" column="ID_INTROITO" cascade="save-update"></many-to-one>
+		 	<many-to-one name="prefacio" column="ID_PREFACIO" cascade="save-update"></many-to-one>
+		 	<many-to-one name="antifonaComunhao" column="ID_ANTIFONA_COMUNHAO" cascade="save-update"></many-to-one>
+			<many-to-one name="oracaoVotiva" cascade="none" column="ID_ORACAO_VOTIVA"/>
+
+		</subclass>
+
+	</class>
+
+</hibernate-mapping>

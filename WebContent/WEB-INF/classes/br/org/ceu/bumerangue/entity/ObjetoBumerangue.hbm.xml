@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.org.ceu.bumerangue.entity">
+
+	<class name="ObjetoBumerangue" table="BMG_OBJETO_BUMERANGUE" polymorphism="implicit" discriminator-value="OB">
+
+		<id name="id" column="ID">
+			<generator class="uuid" />
+		</id>
+
+		<discriminator column="TIPO_OBJETO_BUMERANGUE" type="string" />
+
+		<property name="codigo" column="CODIGO" />
+		<property name="titulo" column="TITULO" />
+		<property name="foraUso" column="FORA_USO" />
+		<property name="localizacaoFisica" column="LOCALIZACAO_FISICA" />
+		<property name="localizacaoFisicaAnterior" column="LOCALIZACAO_FISICA_ANTERIOR" />
+
+ 		<bag name="emprestimos" cascade="none" >
+ 			<key column="ID_OBJETO_BUMERANGUE" />
+ 			<one-to-many class="Emprestimo"/>
+ 		</bag> 				
+
+	 	<many-to-one name="emprestimoAtual" column="ID_EMPRESTIMO_ATUAL" cascade="save-update" lazy="false"></many-to-one>
+
+		<!-- atributos de auditoria -->
+		<property name="dataCriacao" column="DATA_CRIACAO"/>
+		<many-to-one name="usuarioCriacao" cascade="none" column="ID_USUARIO_CRIACAO" />
+		<property name="ipCriacao" column="IP_CRIACAO"/>
+		<property name="dataUltimaAlteracao" column="DATA_ULTIMA_ALTERACAO"/>
+		<many-to-one name="usuarioUltimaAlteracao" cascade="none" column="ID_USUARIO_ULTIMA_ALTERACAO"/>
+		<property name="ipUltimaAlteracao" column="IP_ULTIMA_ALTERACAO"/>
+
+		<subclass name="Video" discriminator-value="VD">
+			<many-to-one name="categoria" column="CATEGORIA" cascade="none" ></many-to-one>
+			<property name="codigoCaixa" column="CODIGO_CAIXA" />
+			<property name="localidade" column="LOCALIDADE" />
+			<property name="data" column="DATA" />
+			<property name="legendado" column="LEGENDADO" />
+			<property name="dublado" column="DUBLADO" />
+			<property name="publico" column="PUBLICO_VIDEO" />
+			<property name="duracaoMinutos" column="DURACAO_MINUTOS" />
+			<many-to-one name="midia" column="MIDIA" cascade="none" ></many-to-one>
+			<property name="palavrasChaves" column="PALAVRAS_CHAVES" />
+			<many-to-one name="observacoes" column="OBSERVACOES" cascade="none"></many-to-one>
+			<property name="observacoesGerais" column="OBSERVACOES_GERAIS" />
+			<property name="localizacaoPI" column="LOCALIZACAO_PI" />
+		</subclass>
+
+		<subclass name="LivroCultural" discriminator-value="LC">
+			<property name="autor" column="AUTOR" />
+			<many-to-one name="idioma" column="IDIOMA" cascade="none"></many-to-one>
+			<property name="palavrasChaves" column="PALAVRAS_CHAVES" />
+			<property name="observacoesGerais" column="OBSERVACOES_GERAIS" />
+		</subclass>
+
+		<subclass name="FilmeComercial" discriminator-value="FC">
+			<property name="tituloOriginal" column="TITULO_ORIGINAL" />
+			<many-to-one name="publico" column="PUBLICO" cascade="none"></many-to-one>
+			<property name="duracaoMinutos" column="DURACAO_MINUTOS" />
+			<property name="ano" column="ANO" />
+			<many-to-one name="categoria" column="CATEGORIA" cascade="none"></many-to-one>
+			<property name="diretor" column="DIRETOR" />
+			<property name="atoresObservacoes" column="ATORES_OBSERVACOES" />
+			<property name="linkSinopse" column="LINK_SINOPSE" />
+			<property name="linksDownload" column="LINKS_DOWNLOAD" />
+		</subclass>
+
+	</class>
+
+</hibernate-mapping>

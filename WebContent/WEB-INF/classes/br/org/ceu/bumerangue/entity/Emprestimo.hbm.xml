@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="br.org.ceu.bumerangue.entity">
+
+	<class name="Emprestimo" table="BMG_EMPRESTIMO">
+
+		<id name="id" column="ID">
+			<generator class="uuid" />
+		</id>
+
+		<property name="dataReserva" column="DATA_RESERVA" />
+		<property name="observacoesReserva" column="OBSERVACAO_RESERVA" />
+		<property name="dataEmprestimo" column="DATA_EMPRESTIMO" />
+		<property name="observacoesEmprestimo" column="OBSERVACAO_EMPRESTIMO" />
+		<property name="dataDevolucao" column="DATA_DEVOLUCAO" />
+		<property name="observacoesDevolucao" column="OBSERVACAO_DEVOLUCAO" />
+		<property name="tipoAtividadeVideo" column="TIPO_ATIVIDADE_VIDEO" />
+		<property name="publicoVideo" column="PUBLICO_VIDEO" />
+		<property name="numeroAssistentesVideo" column="NUMERO_ASSISTENTES_VIDEO" />
+
+		<many-to-one name="objetoBumerangue" column="ID_OBJETO_BUMERANGUE" cascade="none" lazy="false"></many-to-one>
+		<many-to-one name="usuarioRealizouReserva" column="ID_USUARIO_REALIZOU_RESERVA" cascade="none"></many-to-one>
+		<many-to-one name="usuarioEmprestimo" column="ID_USUARIO_EMPRESTIMO" cascade="none"></many-to-one>
+		<many-to-one name="usuarioRealizouEmprestimo" column="ID_USUARIO_REALIZOU_EMPRESTIMO" cascade="none"></many-to-one>
+		<many-to-one name="usuarioRealizouDevolucao" column="ID_USUARIO_REALIZOU_DEVOLUCAO" cascade="none"></many-to-one>
+
+		<!-- atributos de auditoria -->
+		<property name="dataCriacao" column="DATA_CRIACAO"/>
+		<many-to-one name="usuarioCriacao" cascade="none" column="ID_USUARIO_CRIACAO" />
+		<property name="ipCriacao" column="IP_CRIACAO"/>
+		<property name="dataUltimaAlteracao" column="DATA_ULTIMA_ALTERACAO"/>
+		<many-to-one name="usuarioUltimaAlteracao" cascade="none" column="ID_USUARIO_ULTIMA_ALTERACAO"/>
+		<property name="ipUltimaAlteracao" column="IP_ULTIMA_ALTERACAO"/>
+
+	</class>
+
+</hibernate-mapping>
