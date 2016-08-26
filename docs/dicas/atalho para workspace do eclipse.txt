@@ -1,0 +1,3 @@
+c:\eclipse_installations\eclipse_31_M7\eclipse.exe 
+  -data c:\eclipse-workspaces\workspace1 
+  -vmargs -Xms256M -Xmx256M

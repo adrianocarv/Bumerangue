@@ -1,0 +1,25 @@
+connectar como root no terminal:
+	su <login> <senha>
+
+startar um processo
+	ir até o diretório do executável (*.sh)
+	nohup ./<arquivo>.sh &
+
+exibir processos em execução
+	ps -ef | grep <nome do processo>
+
+parar um processo
+	kill <id do processo>
+
+
+setar permissao para um usuário em um diretório
+http://pt.wikipedia.org/wiki/Chmod
+http://www.cybershark.net/tutoriais/permissao-em-sistemas-unix
+http://remoteinsanity.queroumforum.com/viewtopic.php?p=468
+
+dentro do diretório raiz do Tomcat:
+chmod o+rw webapps
+(dá permissão de rw para outros usuários)
+
+excluir diretorio recursivamente nos filhos
+rm oabsys/ -r -f

@@ -1,0 +1,18 @@
+Configurações no Eclipse
+na lib: hsqldb.jar -> org.hsqldb.Server, setar:
+
+Name: <nome da execução>
+Main class: org.hsqldb.Server
+Argument: -database.0 <nome do banco> -dbname.0 <nome do banco>
+
+Configurações no DBVisualizer
+Nova conexão com wizard
+nome + next
+HSQLDB server
+apontar para a mesma lib configurada no Eclipse
+database: <nome do banco>
+database url: jdbc:hsqldb:hsql://localhost:9001/<nome do banco>
+username: sa
+password: (null)
+Test connection
+finish

@@ -1,0 +1,89 @@
+1 - configração do ambiente
+
+instalar o tomcat
+	criar o context na pasta <tomcat_home>\tomcat\conf\Catalina\localhost\bumerangue.xml
+	bumerangue.xml encontra-se em docs. É só copiar para a pasta do tomcat e editá-lo
+	primeiramente, a tag <Realm> é omitida, podendo ficar comentada. Os objetos no Banco de dados ainda não existem.
+
+instalar os plugins no Eclipse
+	implementor
+	net.sf.fjep.fatjar_0.0.25
+	tomcatPluginV31
+	xmlBuddy
+
+configurar o plugin tomcatPluginV31 no eclipse
+
+instalar o mysql
+	mysql-essential-5.0.24-win32.msi
+	porta 3306, usuário: root, senha: 123
+
+instalar o navicat
+	navicat_trial.exe
+	substituir o arquivo navicat.exe no local de instalação
+
+criar o banco de dados
+	pelo navicat, banco: bumerangue
+
+configurar a forma de acesso ao banco de dados pela aplicação
+	database-config.properties (ctrl+shft+r)
+	ao subir a aplicação, os objetos do banco serão criados: hibernate.hbm2ddl.auto=create
+
+subir a aplicação, para criar os objetos no banco
+	neste momento, as tabelas serão criadas.
+	o usuário admin e as permissões serão criadas
+
+rerrubar a tomcat
+
+rodar a carga inicial
+	pelo navicat, rodar os arquivos contidos em docs:
+	carga inicial_dsv.sql
+	migra filme comercial.sql
+
+aplicar configurções para desenvolvimento.
+	copiar o arquivo <bumerangue_home>\web\WEB-INF\lib\mysql-connector-java-3.1.11-bin.jar para <tomcat_home>\common\lib
+	definir hibernate.hbm2ddl.auto=update no database-config.properties
+	definir a tag <Realm> no <tomcat_home>\tomcat\conf\Catalina\localhost\bumerangue.xml
+
+subir a aplicação para desenvolver
+	url de acesso: http://localhost:8080/bumerangue/
+	login: admin
+	senha: admin	
+
+definir no tamcat o path dos fontes da aplicação
+	este passo será necessário, caso o Eclipse não consiga debugar com acesso aos fontes
+	no Eclipse: Window -> Preferences -> Tomcat -> Source Path -> desmarque Automatically compute source path
+	marque o projeto Bumerangue
+	reinicie o tmcat e experimente o debug
+
+2 - desenvolvimento
+
+Entity
+	classe:    <NomeEntidade>
+	arquivo:   <NomeEntidade>.hbm.xml (exceto quando herda de outra Entity)
+	registrar: context-hibernate-cfg.xml (arquivo de mapeamento)
+
+DAO
+	interface: <NomeEntidade>DAO (exceto quando herda de outra Entity)
+	classe:    <NomeEntidade>DaoHibernate (exceto quando herda de outra Entity)
+	registrar: dao-beans.xml
+	registrar: service-beans.xml
+
+Service
+	interface: <NomeModuloOuAplicacao>Service
+	classe:    <NomeModuloOuAplicacao>ServiceImpl
+	registrar: service-beans.xml (tambem referencias para os DAOs e outros Services)
+
+Controller
+	separado no pacote plugin
+	classe:    <NomeCasoDeUso>Controller
+	registrar: controller-beans.xml (para os controllers comum) (tambem as referencias para os services)
+	registrar: controller-mapping.xml (para os controllers comum)
+	registrar: controller-<nomeplugin>-beans.xml (para os controllers dos módulos) (tambem as referencias para os services)
+	registrar: controller-<nomeplugin>mapping.xml (para os controllers dos módulos)
+
+JSP
+	pagina:    <nomeNoPrototipoNavegacao>.jsp
+	registrar: tiles-defs.xml
+
+Web.xml
+	registrar: arquivos do Spring
