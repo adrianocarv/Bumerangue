@@ -1,0 +1,2 @@
+System.out.println( System.getProperty("user.home") ); (No explicit return value)
+
