@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- ******** DAO Definitions ********* -->
+	<bean id="emprestimoDao" class="br.org.ceu.bumerangue.dao.hibernate.EmprestimoDaoHibernate">
+ 		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="objetoBumerangueDao" class="br.org.ceu.bumerangue.dao.hibernate.ObjetoBumerangueDaoHibernate">
+ 		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="permissaoDao" class="br.org.ceu.bumerangue.dao.hibernate.PermissaoDaoHibernate">
+ 		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="configuracaoDao" class="br.org.ceu.bumerangue.dao.properties.ConfiguracaoDaoProperties">
+ 		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="usuarioDao" class="br.org.ceu.bumerangue.dao.hibernate.UsuarioDaoHibernate">
+ 		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="dominioDao" class="br.org.ceu.bumerangue.dao.hibernate.DominioDaoHibernate">
+ 		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="grupoComponenteMissaDao" class="br.org.ceu.bumerangue.dao.hibernate.GrupoComponenteMissaDaoHibernate">
+ 		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="componenteMissaDao" class="br.org.ceu.bumerangue.dao.hibernate.ComponenteMissaDaoHibernate">
+ 		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="referenciaMissalDao" class="br.org.ceu.bumerangue.dao.hibernate.ReferenciaMissalDaoHibernate">
+ 		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="planoMissaDao" class="br.org.ceu.bumerangue.dao.hibernate.PlanoMissaDaoHibernate">
+ 		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+</beans>

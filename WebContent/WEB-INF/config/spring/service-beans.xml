@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- 
+		- - - - - - - - - - - - - - - - - - -
+		- MÃÂ³dulo Core
+		- - - - - - - - - - - - - - - - - - -
+	-->
+
+	<bean id="bumerangueServiceTarget" class="br.org.ceu.bumerangue.service.impl.BumerangueServiceImpl">
+		<property name="mensagemService">
+			<ref bean="mensagemService" />
+		</property>
+		<property name="emprestimoDao">
+			<ref bean="emprestimoDao" />
+		</property>
+		<property name="objetoBumerangueDao">
+			<ref bean="objetoBumerangueDao" />
+		</property>
+		<property name="permissaoDao">
+			<ref bean="permissaoDao" />
+		</property>
+		<property name="usuarioDao">
+			<ref bean="usuarioDao" />
+		</property>
+		<property name="dominioDao">
+			<ref bean="dominioDao" />
+		</property>
+	</bean>
+
+	<bean id="bumerangueService" parent="baseTransactionProxy">
+		<!-- *** Target(Impl.) Injection -->
+		<property name="target">
+			<ref local="bumerangueServiceTarget" />
+		</property>
+		<property name="preInterceptors">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="mensagemServiceTarget" class="br.org.ceu.bumerangue.service.impl.MensagemServiceImpl">
+		<property name="baseMailSender">
+			<ref bean="baseMailSender" />
+		</property>
+		<property name="javaMailSender">
+			<ref bean="javaMailSender" />
+		</property>
+		<property name="usuarioDao">
+			<ref bean="usuarioDao" />
+		</property>
+	</bean>
+
+	<bean id="mensagemService" parent="baseTransactionProxy">
+		<!-- *** Target(Impl.) Injection -->
+		<property name="target">
+			<ref local="mensagemServiceTarget" />
+		</property>
+		<property name="preInterceptors">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="administracaoServiceTarget" class="br.org.ceu.bumerangue.service.impl.AdministracaoServiceImpl">
+		<property name="usuarioDao">
+			<ref bean="usuarioDao" />
+		</property>
+		<property name="dominioDao">
+			<ref bean="dominioDao" />
+		</property>
+		<property name="permissaoDao">
+			<ref bean="permissaoDao" />
+		</property>
+		<property name="configuracaoDao">
+			<ref bean="configuracaoDao" />
+		</property>
+		<property name="objetoBumerangueDao">
+			<ref bean="objetoBumerangueDao" />
+		</property>
+	</bean>
+
+	<bean id="administracaoService" parent="baseTransactionProxy">
+		<!-- *** Target(Impl.) Injection -->
+		<property name="target">
+			<ref local="administracaoServiceTarget" />
+		</property>
+		<property name="preInterceptors">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="fichaMissaServiceTarget" class="br.org.ceu.bumerangue.service.impl.FichaMissaServiceImpl">
+		<property name="mensagemService">
+			<ref bean="mensagemService" />
+		</property>
+		<property name="grupoComponenteMissaDao">
+			<ref bean="grupoComponenteMissaDao" />
+		</property>
+		<property name="componenteMissaDao">
+			<ref bean="componenteMissaDao" />
+		</property>
+		<property name="referenciaMissalDao">
+			<ref bean="referenciaMissalDao" />
+		</property>
+		<property name="planoMissaDao">
+			<ref bean="planoMissaDao" />
+		</property>
+		<property name="dominioDao">
+			<ref bean="dominioDao" />
+		</property>
+	</bean>
+
+	<bean id="fichaMissaService" parent="baseTransactionProxy">
+		<!-- *** Target(Impl.) Injection -->
+		<property name="target">
+			<ref local="fichaMissaServiceTarget" />
+		</property>
+		<property name="preInterceptors">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+</beans>
+
+
+
+
+

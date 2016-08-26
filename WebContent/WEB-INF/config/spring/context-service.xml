@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+
+	<!--
+	   - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+	   - Property Placeholder Configurer
+	   - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	 -->  
+
+	<bean id="BumerangueAppListener" class="br.org.ceu.bumerangue.service.listeners.BumerangueAppListener"></bean>
+
+	<bean id="BumerangueContextHelper" class="br.org.ceu.bumerangue.util.BumerangueContextHelper"></bean>
+
+	<!--
+	   - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+	   - Property Placeholder Configurer
+	   - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	 -->  
+	 
+    <bean id="dataAccessPropertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>/WEB-INF/config/resources/bumerangue-mensagem.properties</value>
+                <value>/WEB-INF/config/resources/bumerangue-config.properties</value>
+                <value>/WEB-INF/config/resources/plugin-video-config.properties</value>
+                <value>/WEB-INF/config/resources/plugin-livroCultural-config.properties</value>
+                <value>/WEB-INF/config/resources/plugin-filmeComercial-config.properties</value>
+                <value>/WEB-INF/config/resources/plugin-fichaMissa-config.properties</value>
+            </list>
+        </property>
+    </bean>
+
+	<!-- 
+	   - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	   - Transaction Proxy
+	   - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	 -->
+	 
+	<bean id="baseTransactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="inserir*">PROPAGATION_REQUIRED</prop>
+				<prop key="copiar*">PROPAGATION_REQUIRED</prop>
+				<prop key="editar*">PROPAGATION_REQUIRED</prop>
+				<prop key="reservar*">PROPAGATION_REQUIRED</prop>
+				<prop key="emprestar*">PROPAGATION_REQUIRED</prop>
+				<prop key="devolver*">PROPAGATION_REQUIRED</prop>
+				<prop key="cancelar*">PROPAGATION_REQUIRED</prop>
+				<prop key="excluir*">PROPAGATION_REQUIRED</prop>
+				<prop key="verificarLogin">PROPAGATION_REQUIRED</prop>
+				<prop key="registrarErroLogin">PROPAGATION_REQUIRED</prop>
+				<prop key="trocarSenhaUsuario">PROPAGATION_REQUIRED</prop>
+				<prop key="reiniciarSenhaUsuario">PROPAGATION_REQUIRED</prop>
+				<prop key="desbloquearUsuario">PROPAGATION_REQUIRED</prop>
+				<prop key="lembrarSenhaConfirmacao">PROPAGATION_REQUIRED</prop>
+				<prop key="compartilharUsuarios">PROPAGATION_REQUIRED</prop>
+				<prop key="trocarPosicaoElementoDominio">PROPAGATION_REQUIRED</prop>
+				<prop key="atualizarLocalizacoesFisicas">PROPAGATION_REQUIRED</prop>
+				<prop key="aprovarPlanoMissa">PROPAGATION_REQUIRED</prop>
+				<prop key="alterarPlanoMissaParaEmAprovacao">PROPAGATION_REQUIRED</prop>
+				<prop key="salvarConfiguracoes">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 
+	- - - - - - - - - - - - - - - - - - - - - - - - - - -
+	- Mail Sender
+	- - - - - - - - - - - - - - - - - - - - - - - - - - -
+	-->
+	<bean id="baseMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="username">
+			<value>${bmg.mail.auth.username}</value>
+		</property>
+		<property name="password">
+			<value>${bmg.mail.auth.password}</value>
+		</property>
+		<property name="host">
+			<value>${bmg.mail.smtp.host}</value>
+		</property>		
+		<property name="javaMailProperties">			
+			<props>
+				<prop key="mail.smtp.port">${bmg.mail.smtp.port}</prop>
+				<prop key="mail.smtp.auth">${bmg.mail.smtp.auth}</prop>
+<!-- 21/06/2014: 2 linhas comentadas para funcionar o envio de e-mails pelo endereço: contato@bumerangue.adm.br
+				 Para funcionar o envio por uma conta do Gmail, basta descomentar as 2 linhas
+				<prop key="mail.smtp.socketFactory.port">${bmg.mail.smtp.port}</prop>
+				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+-->
+				<prop key="mail.smtp.socketFactory.fallback">false</prop>
+				<prop key="mail.debug">false</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="javaMailSender" class="org.springframework.mail.SimpleMailMessage">
+	</bean>
+
+</beans>

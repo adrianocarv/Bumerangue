@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- 
+		- - - - - - - - - - - - - - - - - - - - - - - - - - -
+		- Controller Helper - Agregador de Utils 
+		- - - - - - - - - - - - - - - - - - - - - - - - - - -
+	-->
+	<bean id="controllerHelper" class="br.org.ceu.bumerangue.util.ControllerHelper">
+		<property name="requestParamUtils">
+			<ref bean="requestParamUtils" />
+		</property>
+		<property name="tokenUtils">
+			<bean id="tokenUtils" class="br.org.ceu.bumerangue.util.TokenUtils" />
+		</property>
+	</bean>
+
+	<bean id="utils" class="br.org.ceu.bumerangue.util.Utils">
+		<property name="messageSource">
+			<ref bean="messageSource" />
+		</property>
+	</bean>
+
+	<bean id="requestParamUtils" class="br.org.ceu.bumerangue.util.RequestParamUtils">
+		<property name="multipartResolver">
+			<ref bean="uploadResolver" />
+		</property>
+	</bean>
+
+	<bean id="uploadResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<value>${bmg.manterArquivo.maxFileSize}</value>
+		</property>
+	</bean>
+
+	<!-- 
+		- - - - - - - - - - - - - - - - - - - - - - - - - - -
+		- Base dos Controllers do módulo Core
+		- @! O atributo 'singleton' não precisa ser 'false' 
+		-    pois as actions já foram contruídos em thread-safe.
+		- - - - - - - - - - - - - - - - - - - - - - - - - - -
+	-->
+	<bean id="baseControllerTarget" abstract="true" dependency-check="all" singleton="true">
+		<property name="controllerHelper">
+			<ref local="controllerHelper" />
+		</property>
+		<property name="authRequired">
+			<value>false</value>
+		</property>
+		<property name="validationViewName">
+			<null />
+		</property>
+		<property name="utils">
+			<ref bean="utils" />
+		</property>
+		<property name="multipartResolver">
+			<ref bean="uploadResolver" />
+		</property>
+
+	</bean>
+
+	<bean abstract="true" id="baseController" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyTargetClass">
+			<value>true</value>
+		</property>
+	</bean>
+
+	<!-- 
+		- - - - - - - - - - - - - - - - - - - - - - - - - - -
+		- Base do DWR Controller do módulo Core
+		- - - - - - - - - - - - - - - - - - - - - - - - - - -
+	-->
+
+	<bean id="dwrController" class="org.springframework.web.servlet.mvc.ServletWrappingController" lazy-init="true">
+		<property name="servletClass">
+			<value>uk.ltd.getahead.dwr.DWRServlet</value>
+		</property>
+		<property name="initParameters">
+			<props>
+				<prop key="debug">${ajax.dwr.debug}</prop>
+				<prop key="logLevel">${ajax.dwr.logLevel}</prop>
+				<prop key="config-dwr">${ajax.dwr.config-dwr}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 
+		- - - - - - - - - - - - - - - - - - -
+		- Exception Resolver
+		- - - - - - - - - - - - - - - - - - -
+	-->
+
+	<bean id="baseExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" />
+
+	<!--
+		- - - - - - - - - - - - - - - - - - -
+		- Handler Mapping
+		- - - - - - - - - - - - - - - - - - -
+	-->
+
+	<bean id="baseUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="alwaysUseFullPath" value="true" />
+		<property name="interceptors">
+			<list>
+				<ref bean="openSessionInViewInterceptor" />
+			</list>
+		</property>
+	</bean>
+
+	<!--
+		- Open Session In View Pattern (ver doc. Hibernate), usando suporte do Spring (ver doc. Spring)
+	-->
+	<bean name="openSessionInViewInterceptor" class="org.springframework.orm.hibernate3.support.OpenSessionInViewInterceptor">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+
+	<!--
+		- - - - - - - - - - - - - - - - - - -
+		- Tiles
+		- - - - - - - - - - - - - - - - - - -
+	-->
+
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/config/tiles/tiles-defs.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--
+		- - - - - - - - - - - - - - - - - - -
+		- View Resolver/Configurer
+		- - - - - - - - - - - - - - - - - - -
+	-->
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.tiles.TilesView</value>
+		</property>
+	</bean>
+
+	<!--
+		***************************************************************************************************
+		// i18n - Message Bundle
+		***************************************************************************************************	  
+	-->
+	<bean id="baseMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="cacheSeconds">
+			<value>${messageBundle.parent.cacheSeconds}</value>
+		</property>
+	</bean>
+
+	<bean id="messageSource" parent="baseMessageSource">
+		<property name="basenames">
+			<list>
+                <value>/WEB-INF/config/resources/bumerangue-mensagem</value>
+                <value>/WEB-INF/config/resources/bumerangue-config</value>
+                <value>/WEB-INF/config/resources/plugin-video-config</value>
+                <value>/WEB-INF/config/resources/plugin-livroCultural-config</value>
+                <value>/WEB-INF/config/resources/plugin-filmeComercial-config</value>
+                <value>/WEB-INF/config/resources/plugin-fichaMissa-config</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+
+  <!-- ============================================================================================== -->
+  <!-- Definição da biblioteca de tags do bumerangue                                                  -->
+  <!-- ============================================================================================== -->           
+  <tlib-version>1.2</tlib-version>
+  <short-name>BumerangueTags</short-name> 
+ 	 
+  <uri>bumerangue</uri>
+
+  <!-- ============================================================================================== -->
+  <!-- Retorna true, se o usuário tiver alguma role na seqüência de números informada. ============== -->
+  <!-- ============================================================================================== -->    
+  <function>
+  	<name>isUserInRole</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>boolean isUserInRole(br.org.ceu.bumerangue.entity.Usuario, java.lang.String) </function-signature>
+  </function>  
+
+  <!-- ============================================================================================== -->
+  <!-- Retorna true, se o usuário tiver o tipo de permissão no módulo passados como parâmetro. ===== -->
+  <!-- ============================================================================================== -->    
+  <function>
+  	<name>isUserInRoleModulo</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>boolean isUserInRoleModulo(br.org.ceu.bumerangue.entity.Usuario, java.lang.Integer, java.lang.String) </function-signature>
+  </function>  
+
+  <!-- ============================================================================================== -->
+  <!-- Função utilizada para apresentar a Data atual formatada.====================================== -->
+  <!-- ============================================================================================== -->    
+  <function>
+  	<name>getDataAtual</name>
+  	<function-class>br.org.ceu.bumerangue.util.DateUtil</function-class>
+  	<function-signature>java.lang.String getFormattedCurrentDate() </function-signature>
+  </function>  
+  
+  <!-- ============================================================================================== -->
+  <!-- Função utilizada para formatar um valor, conforme os padrões de apresentação.================= -->
+  <!-- ============================================================================================== -->    
+  <function>
+  	<name>getFormatado</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>java.lang.String getFormatted(java.lang.Object) </function-signature>
+  </function>  
+
+  <!-- ============================================================================================== -->
+  <!-- Função utilizada para retornar a quantidade de elementos de uma colection. =================== -->
+  <!-- ============================================================================================== -->    
+  <function>
+  	<name>size</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>java.lang.String size(java.util.Collection) </function-signature>
+  </function>  
+
+  <!-- ============================================================================================== -->
+  <!-- Função utilizada para retornar a quantidade de elementos de um map. ========================== -->
+  <!-- ============================================================================================== -->    
+  <function>
+  	<name>sizeMap</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>java.lang.String size(java.util.Map) </function-signature>
+  </function>  
+
+  <!-- ========================================================================================================================= -->
+  <!-- Função utilizada para retornar o ElementoDomínio correspondente ao tipo de permissão do usuário passado como parâmetro. = -->
+  <!-- ========================================================================================================================= -->    
+  <function>
+  	<name>getTipoPermissao</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>br.org.ceu.bumerangue.entity.ElementoDominio getTipoPermissao(br.org.ceu.bumerangue.entity.Usuario) </function-signature>
+  </function>  
+
+  <!-- =================================================================================================================================== -->
+  <!-- Função utilizada para retornar o ElementoDomínio correspondente ao tipo de permissão que o usuário tem no 'nomeModulo' informado. = -->
+  <!-- =================================================================================================================================== -->    
+  <function>
+  	<name>getTipoPermissaoModulo</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>br.org.ceu.bumerangue.entity.ElementoDominio getTipoPermissaoModulo(br.org.ceu.bumerangue.entity.Usuario, java.lang.String) </function-signature>
+  </function>  
+
+  <!-- =========================================================================================== -->
+  <!-- Função utilizada para retornar o nome do arquivo correspondente ao logotipo da aplicação. = -->
+  <!-- =========================================================================================== -->    
+  <function>
+  	<name>getNomeArquivoLogotipo</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>java.lang.String getNomeArquivoLogotipo()</function-signature>
+  </function>  
+
+  <!-- ================================================================================================ -->
+  <!-- Função utilizada para retornar a descrição do módulo correspondente ao 'nomeModulo' informado. = -->
+  <!-- ================================================================================================ -->    
+  <function>
+  	<name>getDescricaoModulo</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>java.lang.String getDescricaoModulo(java.lang.String)</function-signature>
+  </function>  
+
+  <!-- ========================================================================================= -->
+  <!-- Retorna true, se o módulo correspondente ao 'nomeModulo' informado estiver disponível . = -->
+  <!-- ========================================================================================= -->    
+  <function>
+  	<name>isModuloDisponivel</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>boolean isModuloDisponivel(java.lang.String)</function-signature>
+  </function>  
+
+  <!-- ================================================================================= -->
+  <!-- Retorna true, se a chave da configuração do módulo estiver no formato de chave. = -->
+  <!-- ================================================================================= -->    
+  <function>
+  	<name>isChaveConfiguracao</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>boolean isChaveConfiguracao(java.lang.String, java.lang.String)</function-signature>
+  </function> 
+
+  <!-- ================================================================================= -->
+  <!-- Retorna a descrição da chave da configuração.                                   = -->
+  <!-- ================================================================================= -->    
+  <function>
+  	<name>getDescricaoChaveConfiguracao</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>boolean getDescricaoChaveConfiguracao(java.util.Map, java.lang.String)</function-signature>
+  </function> 
+
+  <!-- =========================================================================== -->
+  <!-- Retorna a quantidade de registros apresentado em cada página da listagem. = -->
+  <!-- =========================================================================== -->    
+  <function>
+  	<name>getTamanhoPaginaListagem</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>int getTamanhoPaginaListagem()</function-signature>
+  </function> 
+  
+  <!-- ======================================================= -->
+  <!-- Retorna a mensagem informando que a lista está vazia. = -->
+  <!-- ======================================================= -->    
+  <function>
+  	<name>getMensagemListagemVazia</name>
+  	<function-class>br.org.ceu.bumerangue.util.Utils</function-class>
+  	<function-signature>java.lang.String getMensagemListagemVazia()</function-signature>
+  </function> 
+     
+</taglib>

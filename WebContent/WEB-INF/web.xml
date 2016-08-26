@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<!--
+		- Application Contexts (Global - dispon�vel para todos os m�dulos)
+	-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/config/spring/context-controller.xml
+			/WEB-INF/config/spring/context-hibernate-cfg.xml 
+			/WEB-INF/config/spring/context-service.xml
+			/WEB-INF/config/spring/service-beans.xml
+			/WEB-INF/config/spring/dao-beans.xml
+		</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.servet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>displaytag</param-value>
+	</context-param>	
+
+	<!-- Filters -->
+	<filter>
+		<filter-name>TemplateFilter</filter-name>
+		<filter-class>br.org.ceu.bumerangue.service.filters.TemplateFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>br.org.ceu.bumerangue.service.filters.LoginFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>responseOverrideFilter</filter-name>
+		<filter-class>org.displaytag.filter.ResponseOverrideFilter</filter-class>
+	</filter>
+
+	<!-- Filters Mappings -->
+	<filter-mapping>
+		<filter-name>TemplateFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>responseOverrideFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+
+	<!-- Listeners -->
+	<listener>
+		<listener-class>br.org.ceu.bumerangue.service.listeners.LogoutListener</listener-class>
+	</listener>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<scripting-invalid>true</scripting-invalid>
+		</jsp-property-group>
+	</jsp-config>
+
+	<!--
+		- Context Loader respons�vel por carregar os ACs declarados acima.
+		- @warning: N�o usar ContextLoaderListener para Servlet <= 2.3.
+		-           Oracle OC4J 9.0.3, BEA Weblogic at� 8.1 e IBM Websphere 5.x
+		-		   sao os �nicos AppServers suportando Servlet 2.3 que n�o 
+		-		   inicializam listeners antes do Servlet, o que inviabiliza 
+		-		   o uso de ContextLoaderListener. 
+	-->
+	<servlet>
+		<servlet-name>context</servlet-name>
+		<servlet-class>br.org.ceu.bumerangue.util.BumerangueContextLoaderServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!--  
+		- (Spring MVC) Dispatcher Servlet para m�dulo Core
+	-->
+	<servlet>
+		<servlet-name>bumerangue</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/config/spring/controller-beans.xml
+				/WEB-INF/config/spring/controller-mapping.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<!-- 
+		- (Spring MVC) Servlet Mapping do m�dulo core
+	-->
+	<servlet-mapping>
+		<servlet-name>bumerangue</servlet-name>
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
+
+    <!-- Ajax com DWR -->
+	<servlet>
+	    <servlet-name>dwr-invoker</servlet-name>
+	    <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+	    <init-param>
+	      <param-name>debug</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+	    <init-param>
+	      <param-name>activeReverseAjaxEnabled</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+	    <init-param>
+	      <param-name>initApplicationScopeCreatorsAtStartup</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+	    <init-param>
+	      <param-name>maxWaitAfterWrite</param-name>
+	      <param-value>500</param-value>
+	    </init-param>
+	    <load-on-startup>3</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+	    <servlet-name>dwr-invoker</servlet-name>
+	    <url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- REGRAS DE SEGURAN�A -->
+
+	<!-- Todos acessam -->
+	<security-constraint>
+		<display-name>Security Constraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/manterSeguranca.action</url-pattern>
+			<url-pattern>/manterArquivo.action</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>*</role-name>
+		</auth-constraint>
+    </security-constraint>
+
+	<!-- S� os Administradores acessam -->
+	<security-constraint>
+		<display-name>Security Constraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/manterUsuario.action</url-pattern>
+			<url-pattern>/compartilharUsuario.action</url-pattern>
+			<url-pattern>/manterDominio.action</url-pattern>
+			<url-pattern>/manterConfiguracao.action</url-pattern>
+			<url-pattern>/pesquisarCodigo.action</url-pattern>
+			<url-pattern>/verificarCodigo.action</url-pattern>
+			<url-pattern>/manterLocalizacaoFisica.action</url-pattern>
+			<url-pattern>/atualizarVersao.action</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN_VIDEO</role-name>
+			<role-name>ADMIN_LIVRO_CULTURAL</role-name>
+			<role-name>ADMIN_FILME_COMERCIAL</role-name>
+			<role-name>ADMIN_FICHA_MISSA</role-name>
+		</auth-constraint>
+   	</security-constraint>
+
+    <!-- Autoriza��o para VIDEO -->
+	<security-constraint>
+		<display-name>Security Constraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/manterVideo.action</url-pattern>
+			<url-pattern>/relatorioVideo.action</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN_VIDEO</role-name>
+			<role-name>AVANCADO_VIDEO</role-name>
+			<role-name>BASICO_VIDEO</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!-- Autoriza��o para LIVRO_CULTURAL -->
+	<security-constraint>
+		<display-name>Security Constraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/manterLivroCultural.action</url-pattern>
+			<url-pattern>/relatorioLivroCultural.action</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN_LIVRO_CULTURAL</role-name>
+			<role-name>AVANCADO_LIVRO_CULTURAL</role-name>
+			<role-name>BASICO_LIVRO_CULTURAL</role-name>
+		</auth-constraint>
+    </security-constraint>
+
+	<!-- Autoriza��o para FICHA_MISSA -->
+	<security-constraint>
+		<display-name>Security Constraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/manterGrupoComponenteMissa.action</url-pattern>
+			<url-pattern>/manterComponenteMissa.action</url-pattern>
+			<url-pattern>/manterReferenciaMissal.action</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN_FICHA_MISSA</role-name>
+		</auth-constraint>
+    </security-constraint>
+	<security-constraint>
+		<display-name>Security Constraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/manterPlanoMissa.action</url-pattern>
+			<url-pattern>/exportarFichaMissa.action</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN_FICHA_MISSA</role-name>
+			<role-name>AVANCADO_FICHA_MISSA</role-name>
+			<role-name>BASICO_FICHA_MISSA</role-name>
+		</auth-constraint>
+    </security-constraint>
+
+	<!-- Default login configuration uses form-based authentication -->
+	<login-config>
+      <auth-method>FORM</auth-method>
+      <realm-name>Form-Based Authentication Area</realm-name>
+      <form-login-config>
+        <form-login-page>/manterSeguranca.action?method=logarPre</form-login-page>
+        <form-error-page>/manterSeguranca.action?method=logarErro</form-error-page>
+      </form-login-config>
+    </login-config>
+
+	<!-- Security roles referenced by this web application -->
+	<security-role>
+		<description>Administrador do M�dulo de V�deos</description>
+		<role-name>ADMIN_VIDEO</role-name>
+	</security-role>
+	<security-role>
+		<description>Usu�rio avan�ado do M�dulo de V�deos</description>
+		<role-name>AVANCADO_VIDEO</role-name>
+	</security-role>
+	<security-role>
+		<description>Usu�rio b�sico do M�dulo de V�deos</description>
+		<role-name>BASICO_VIDEO</role-name>
+	</security-role>
+	<security-role>
+		<description>Administrador do M�dulo de Livros Culturais</description>
+		<role-name>ADMIN_LIVRO_CULTURAL</role-name>
+	</security-role>
+	<security-role>
+		<description>Usu�rio avan�ado do M�dulo de Livros Culturais</description>
+		<role-name>AVANCADO_LIVRO_CULTURAL</role-name>
+	</security-role>
+	<security-role>
+		<description>Usu�rio b�sico do M�dulo de Livros Culturais</description>
+		<role-name>BASICO_LIVRO_CULTURAL</role-name>
+	</security-role>
+	<security-role>
+		<description>Administrador do M�dulo de Filmes Comerciais</description>
+		<role-name>ADMIN_FILME_COMERCIAL</role-name>
+	</security-role>
+	<security-role>
+		<description>Administrador do M�dulo das Fichas de Missa</description>
+		<role-name>ADMIN_FICHA_MISSA</role-name>
+	</security-role>
+	<security-role>
+		<description>Usu�rio avan�ado do M�dulo das Fichas de Missa</description>
+		<role-name>AVANCADO_FICHA_MISSA</role-name>
+	</security-role>
+	<security-role>
+		<description>Usu�rio b�sico do M�dulo das Fichas de Missa</description>
+		<role-name>BASICO_FICHA_MISSA</role-name>
+	</security-role>
+</web-app>

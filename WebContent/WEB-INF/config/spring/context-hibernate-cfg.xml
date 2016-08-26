@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- 
+	   - - - - - - - - - - - - - - - - - - -
+	   - DataSource Config.
+	   - - - - - - - - - - - - - - - - - - -
+	  -->	
+
+	<!-- DriverManagerDataSource, do Spring, não é um Connection Pool! -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		
+		<property name="driverClassName">
+			<value>${bmg.dataSource.driverClassName}</value>
+		</property>
+		
+		<property name="url">
+			<value>${bmg.dataSource.url}</value>
+		</property>
+
+		<property name="username"><value>${bmg.dataSource.username}</value></property>
+		<property name="password"><value>${bmg.dataSource.password}</value></property>
+		
+	</bean>	
+
+
+	<!-- 
+	   - - - - - - - - - - - - - - - - - - -
+	   - Hibernate Transaction Manager
+	   - - - - - - - - - - - - - - - - - - -
+	  -->
+	  
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+
+	<!-- 
+	   - - - - - - - - - - - - - - - - - - -
+	   - Hibernate Session Factory
+	   - - - - - - - - - - - - - - - - - - -
+	  -->
+	  
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.query.substitutions">${hibernate.query.substitutions}</prop>
+				<prop key="hibernate.cglib.use_reflection_optimizer">${hibernate.cglib.use_reflection_optimizer}</prop>	
+				<prop key="hibernate.jdbc.batch_size">0</prop>			
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>br/org/ceu/bumerangue/entity/ObjetoBumerangue.hbm.xml</value>
+				<value>br/org/ceu/bumerangue/entity/Emprestimo.hbm.xml</value>
+				<value>br/org/ceu/bumerangue/entity/Usuario.hbm.xml</value>
+				<value>br/org/ceu/bumerangue/entity/Permissao.hbm.xml</value>
+				<value>br/org/ceu/bumerangue/entity/Dominio.hbm.xml</value>
+				<value>br/org/ceu/bumerangue/entity/ElementoDominio.hbm.xml</value>
+				<value>br/org/ceu/bumerangue/entity/GrupoComponenteMissa.hbm.xml</value>
+				<value>br/org/ceu/bumerangue/entity/ComponenteMissa.hbm.xml</value>
+				<value>br/org/ceu/bumerangue/entity/ReferenciaMissal.hbm.xml</value>
+				<value>br/org/ceu/bumerangue/entity/PlanoMissa.hbm.xml</value>
+				<value>br/org/ceu/bumerangue/entity/Missa.hbm.xml</value>
+			</list>
+		</property>		
+	</bean>
+
+</beans>

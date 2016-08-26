@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{ISO8601}] %-5p %c %m %n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="DEBUG"/>
+            <param name="LevelMax" value="WARN"/>
+        </filter>
+    </appender>
+    
+    <appender name="STDERR"  class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.err" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{ISO8601}] %-5p %c %m %n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="WARN"/>
+            <param name="LevelMax" value="FATAL"/>
+        </filter>
+    </appender>
+     
+	<appender name="FILE" class="org.apache.log4j.FileAppender">
+		<param name="File" value="bumerangue.log"/>
+		<param name="Append" value="false"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %p - %m%n"/>
+		</layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="WARN"/>
+            <param name="LevelMax" value="FATAL"/>
+        </filter>
+	</appender>
+
+    <logger name="org.springframework" additivity="false">
+        <level value="ERROR"/>   
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+
+    <logger name="net.sf.hibernate" additivity="false">
+        <level value="ERROR"/>   
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="org.apache.catalina" additivity="false">
+        <level value="ERROR"/>   
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="org.apache.commons.digester" additivity="false">
+        <level value="ERROR"/>   
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+
+    <logger name="org.springframework.transaction" additivity="false">
+        <level value="ERROR"/>   
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <!--                           -->
+    <!-- setup log4j's root logger -->
+    <!--                           -->
+    <root>
+
+        <level value="ERROR" />
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="STDERR"/>
+ 	    <appender-ref ref="FILE" />
+
+    </root>
+    
+    
+</log4j:configuration>

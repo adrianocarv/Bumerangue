@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dwr>
+	<allow>
+		<create creator="new" javascript="DWRUtils">
+			<param name="class" value="br.org.ceu.bumerangue.controller.dwr.DWRUtils"/>
+		</create>
+		
+		<convert converter="bean" match="br.org.ceu.bumerangue.controller.dwr.VOAutoCompletar"/>
+	</allow>
+</dwr>

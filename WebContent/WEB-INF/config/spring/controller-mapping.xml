@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    
+	<!--
+	   - - - - - - - - - - - - - - - - - - -
+	   - Handler Mapping
+	   - - - - - - - - - - - - - - - - - - -
+	  -->
+
+	<!-- comum -->
+	<bean id="comumUrlMapping" parent="baseUrlMapping">
+		<property name="order"><value>1</value></property>
+		<property name="mappings">
+			<props>
+				<prop key="/**/manterSeguranca.action">manterSegurancaController</prop>
+				<prop key="/**/manterUsuario.action">manterUsuarioController</prop>
+				<prop key="/**/manterSegurancaLivreAcesso.action">manterSegurancaController</prop>
+				<prop key="/**/compartilharUsuario.action">compartilharUsuarioController</prop>
+				<prop key="/**/manterDominio.action">manterDominioController</prop>
+				<prop key="/**/manterConfiguracao.action">manterConfiguracaoController</prop>
+				<prop key="/**/pesquisarCodigo.action">pesquisarCodigoController</prop>
+				<prop key="/**/verificarCodigo.action">verificarCodigoController</prop>
+				<prop key="/**/manterLocalizacaoFisica.action">manterLocalizacaoFisicaController</prop>
+				<prop key="/**/atualizarVersao.action">atualizarVersaoController</prop>
+				<prop key="/**/manterArquivo.action">manterArquivoController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- video -->
+	<bean id="videoUrlMapping" parent="baseUrlMapping">
+		<property name="order"><value>6</value></property>
+		<property name="mappings">
+			<props>
+				<prop key="/**/manterVideo.action">manterVideoController</prop>
+				<prop key="/**/relatorioVideo.action">relatorioVideoController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- livroCultural -->
+	<bean id="livroCulturalUrlMapping" parent="baseUrlMapping">
+		<property name="order"><value>7</value></property>
+		<property name="mappings">
+			<props>
+				<prop key="/**/manterLivroCultural.action">manterLivroCulturalController</prop>
+				<prop key="/**/relatorioLivroCultural.action">relatorioLivroCulturalController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- filmeComercial -->
+	<bean id="filmeComercialUrlMapping" parent="baseUrlMapping">
+		<property name="order"><value>8</value></property>
+		<property name="mappings">
+			<props>
+				<prop key="/**/manterFilmeComercial.action">manterFilmeComercialController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- fichaMissa -->
+	<bean id="fichaMissaUrlMapping" parent="baseUrlMapping">
+		<property name="order"><value>9</value></property>
+		<property name="mappings">
+			<props>
+				<prop key="/**/manterGrupoComponenteMissa.action">manterGrupoComponenteMissaController</prop>
+				<prop key="/**/manterComponenteMissa.action">manterComponenteMissaController</prop>
+				<prop key="/**/manterPlanoMissa.action">manterPlanoMissaController</prop>
+				<prop key="/**/manterReferenciaMissal.action">manterReferenciaMissalController</prop>
+				<prop key="/**/exportarFichaMissa.action">exportarFichaMissaController</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

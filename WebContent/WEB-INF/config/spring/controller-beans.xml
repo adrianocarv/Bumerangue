@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- 
+		- - - - - - - - - - - - - - - - - - -
+		- Controllers
+		- - - - - - - - - - - - - - - - - - -
+	-->
+
+	<!-- comum -->
+	<bean id="manterSegurancaController" parent="baseController">
+		<property name="target">
+			<bean id="manterSegurancaControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.controller.web.ManterSegurancaController">
+				<property name="bumerangueService">
+					<ref bean="bumerangueService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="manterUsuarioController" parent="baseController">
+		<property name="target">
+			<bean id="manterUsuarioControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.controller.web.ManterUsuarioController">
+				<property name="bumerangueService">
+					<ref bean="bumerangueService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="compartilharUsuarioController" parent="baseController">
+		<property name="target">
+			<bean id="compartilharUsuarioControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.controller.web.CompartilharUsuarioController">
+				<property name="administracaoService">
+					<ref bean="administracaoService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="manterDominioController" parent="baseController">
+		<property name="target">
+			<bean id="manterDominioControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.controller.web.ManterDominioController">
+				<property name="administracaoService">
+					<ref bean="administracaoService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="manterConfiguracaoController" parent="baseController">
+		<property name="target">
+			<bean id="manterConfiguracaoControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.controller.web.ManterConfiguracaoController">
+				<property name="administracaoService">
+					<ref bean="administracaoService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="pesquisarCodigoController" parent="baseController">
+		<property name="target">
+			<bean id="pesquisarCodigoControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.controller.web.PesquisarCodigoController">
+				<property name="administracaoService">
+					<ref bean="administracaoService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="verificarCodigoController" parent="baseController">
+		<property name="target">
+			<bean id="verificarCodigoControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.controller.web.VerificarCodigoController">
+				<property name="administracaoService">
+					<ref bean="administracaoService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="manterLocalizacaoFisicaController" parent="baseController">
+		<property name="target">
+			<bean id="manterLocalizacaoFisicaControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.controller.web.ManterLocalizacaoFisicaController">
+				<property name="administracaoService">
+					<ref bean="administracaoService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="atualizarVersaoController" parent="baseController">
+		<property name="target">
+			<bean id="atualizarVersaoControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.controller.web.AtualizarVersaoController">
+			</bean>
+		</property>
+	</bean>
+	<bean id="manterArquivoController" parent="baseController">
+		<property name="target">
+			<bean id="manterArquivoControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.controller.web.ManterArquivoController">
+				<property name="bumerangueService">
+					<ref bean="bumerangueService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- video -->
+	<bean id="manterVideoController" parent="baseController">
+		<property name="target">
+			<bean id="manterVideoControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.plugins.video.controller.web.ManterVideoController">
+				<property name="bumerangueService">
+					<ref bean="bumerangueService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="relatorioVideoController" parent="baseController">
+		<property name="target">
+			<bean id="relatorioVideoControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.plugins.video.controller.web.RelatorioVideoController">
+				<property name="bumerangueService">
+					<ref bean="bumerangueService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- livroCultural -->
+	<bean id="manterLivroCulturalController" parent="baseController">
+		<property name="target">
+			<bean id="manterLivroCulturalControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.plugins.livroCultural.controller.web.ManterLivroCulturalController">
+				<property name="bumerangueService">
+					<ref bean="bumerangueService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="relatorioLivroCulturalController" parent="baseController">
+		<property name="target">
+			<bean id="relatorioLivroCulturalControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.plugins.livroCultural.controller.web.RelatorioLivroCulturalController">
+				<property name="bumerangueService">
+					<ref bean="bumerangueService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- filmeComercial -->
+	<bean id="manterFilmeComercialController" parent="baseController">
+		<property name="target">
+			<bean id="manterFilmeComercialControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.plugins.filmeComercial.controller.web.ManterFilmeComercialController">
+				<property name="bumerangueService">
+					<ref bean="bumerangueService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- fichaMissa -->
+	<bean id="manterGrupoComponenteMissaController" parent="baseController">
+		<property name="target">
+			<bean id="manterGrupoComponenteMissaControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.plugins.fichaMissa.controller.web.ManterGrupoComponenteMissaController">
+				<property name="fichaMissaService">
+					<ref bean="fichaMissaService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="manterComponenteMissaController" parent="baseController">
+		<property name="target">
+			<bean id="manterComponenteMissaControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.plugins.fichaMissa.controller.web.ManterComponenteMissaController">
+				<property name="fichaMissaService">
+					<ref bean="fichaMissaService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="manterPlanoMissaController" parent="baseController">
+		<property name="target">
+			<bean id="manterPlanoMissaControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.plugins.fichaMissa.controller.web.ManterPlanoMissaController">
+				<property name="fichaMissaService">
+					<ref bean="fichaMissaService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="manterReferenciaMissalController" parent="baseController">
+		<property name="target">
+			<bean id="manterReferenciaMissalControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.plugins.fichaMissa.controller.web.ManterReferenciaMissalController">
+				<property name="fichaMissaService">
+					<ref bean="fichaMissaService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="exportarFichaMissaController" parent="baseController">
+		<property name="target">
+			<bean id="exportarFichaMissaControllerTarget" parent="baseControllerTarget" class="br.org.ceu.bumerangue.plugins.fichaMissa.controller.web.ExportarFichaMissaController">
+				<property name="fichaMissaService">
+					<ref bean="fichaMissaService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+</beans>

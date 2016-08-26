@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<!-- Definições das telas -->
+<tiles-definitions>	
+
+	<!-- template -->
+	<definition name="template" path="/tiles/template.jsp">
+		<put name="tituloJanela"	value="Bumerangue" />
+		<put name="tituloPagina"	value="Bumerangue" />
+    	<put name="menuHorizontal"	value="/tiles/menuHorizontal.jsp" />
+    	<put name="menuVertical"	value="/tiles/menuVertical.jsp" />
+    	<put name="cabecalho"		value="/tiles/cabecalho.jsp" />
+    	<put name="rodape"			value="/tiles/rodape.jsp" />
+    	<put name="corpo"			value="/tiles/corpoBranco.jsp" />
+    	<put name="moduloAtual"		value="modulo_atual" />
+    	<put name="ucAtual"			value="uc_atual" />
+	</definition>
+
+	<!-- páginas comum -->
+	<definition name="error" extends="template">
+		<put name="tituloPagina"	value="Erro inesperado" />
+		<put name="corpo"			value="/pages/error.jsp"/>
+	</definition>
+	<definition name="index" extends="template">
+		<put name="tituloPagina"	value="index" />
+		<put name="corpo"			value="/pages/index.jsp"/>
+	</definition>
+	<definition name="login" extends="template">
+		<put name="tituloPagina"	value="Login" />
+		<put name="corpo"			value="/pages/login.jsp"/>
+	</definition>
+	<definition name="loginErro" extends="template">
+		<put name="tituloPagina"	value="Erro ao Logar" />
+		<put name="corpo"			value="/pages/loginErro.jsp"/>
+	</definition>
+	<definition name="lembreteSenha" extends="template">
+		<put name="tituloPagina"	value="Esqueci minha senha" />
+		<put name="corpo"			value="/pages/lembreteSenha.jsp"/>
+	</definition>
+	<definition name="apresentacao" extends="template">
+		<put name="tituloPagina"	value=" " />
+		<put name="corpo"			value="/pages/apresentacao.jsp"/>
+    	<put name="ucAtual"			value="comum_1" />
+	</definition>
+	<definition name="trocarSenha" extends="template">
+		<put name="tituloPagina"	value="Trocar Senha" />
+		<put name="corpo"			value="/pages/trocarSenha.jsp"/>
+    	<put name="ucAtual"			value="comum_2" />
+	</definition>
+	<definition name="administracao" extends="template">
+		<put name="tituloPagina"	value="Administração" />
+		<put name="corpo"			value="/pages/administracao.jsp"/>
+    	<put name="ucAtual"			value="comum_3" />
+	</definition>
+	<definition name="compartilharUsuarios" extends="template">
+		<put name="tituloPagina"	value="Compartilhar Usuários entre módulos" />
+		<put name="corpo"			value="/pages/compartilharUsuarios.jsp"/>
+    	<put name="ucAtual"			value="comum_3" />
+	</definition>
+	<definition name="dominios" extends="template">
+		<put name="tituloPagina"	value="Domínios" />
+		<put name="corpo"			value="/pages/dominios.jsp"/>
+    	<put name="ucAtual"			value="comum_3" />
+	</definition>
+	<definition name="configuracoes" extends="template">
+		<put name="tituloPagina"	value="Configurações" />
+		<put name="corpo"			value="/pages/configuracoes.jsp"/>
+    	<put name="ucAtual"			value="comum_3" />
+	</definition>
+	<definition name="pesquisarCodigos" extends="template">
+		<put name="tituloPagina"	value="Pesquisa com intervalo de códigos" />
+		<put name="corpo"			value="/pages/pesquisarCodigos.jsp"/>
+    	<put name="ucAtual"			value="comum_3" />
+	</definition>
+	<definition name="verificarCodigos" extends="template">
+		<put name="tituloPagina"	value="Verificação de códigos, a partir de uma sequência" />
+		<put name="corpo"			value="/pages/verificarCodigos.jsp"/>
+    	<put name="ucAtual"			value="comum_3" />
+	</definition>
+	<definition name="localizacoesFisicas" extends="template">
+		<put name="tituloPagina"	value="Localizações Físicas" />
+		<put name="corpo"			value="/pages/localizacoesFisicas.jsp"/>
+    	<put name="ucAtual"			value="comum_3" />
+	</definition>
+	<definition name="atualizarLocalizacoesFisicas" extends="template">
+		<put name="tituloPagina"	value="Atualizar Localizações Físicas nos objetos" />
+		<put name="corpo"			value="/pages/atualizarLocalizacoesFisicas.jsp"/>
+    	<put name="ucAtual"			value="comum_3" />
+	</definition>
+	<definition name="editarUsuarioAdmin" extends="template">
+		<put name="tituloPagina"	value="Editar o usuário ADMIN" />
+		<put name="corpo"			value="/pages/editarUsuarioAdmin.jsp"/>
+    	<put name="ucAtual"			value="comum_3" />
+	</definition>
+	<definition name="pesquisarUsuario" extends="template">
+		<put name="tituloPagina"	value="Pesquisar Usuário" />
+		<put name="corpo"			value="/pages/pesquisarUsuario.jsp"/>
+    	<put name="ucAtual"			value="comum_4" />
+	</definition>
+	<definition name="editarUsuario" extends="template">
+		<put name="tituloPagina"	value="Editar Usuário" />
+		<put name="corpo"			value="/pages/editarUsuario.jsp"/>
+    	<put name="ucAtual"			value="comum_4" />
+	</definition>
+	<definition name="arquivos" extends="template">
+		<put name="tituloPagina"	value="Arquivos" />
+		<put name="corpo"			value="/pages/arquivos.jsp"/>
+    	<put name="ucAtual"			value="comum_5" />
+	</definition>
+	<definition name="comentarioSugestao" extends="template">
+		<put name="tituloPagina"	value="Comentários e sugestões" />
+		<put name="corpo"			value="/pages/comentarioSugestao.jsp"/>
+    	<put name="ucAtual"			value="comum_6" />
+	</definition>
+
+	<!-- video -->
+	<definition name="videoPesquisarVideo" extends="template">
+		<put name="tituloPagina"	value="Pesquisar Vídeos" />
+		<put name="corpo"			value="/pages/video/pesquisarVideo.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="videoDetalharVideo" extends="template">
+		<put name="tituloPagina"	value="Detalhar Vídeo" />
+		<put name="corpo"			value="/pages/video/detalharVideo.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="videoEditarVideo" extends="template">
+		<put name="tituloPagina"	value="Editar Vídeo" />
+		<put name="corpo"			value="/pages/video/editarVideo.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="videoReservarVideo" extends="template">
+		<put name="tituloPagina"	value="Reservar Vídeo" />
+		<put name="corpo"			value="/pages/video/reservarVideo.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="videoEmprestarVideo" extends="template">
+		<put name="tituloPagina"	value="Emprestar Vídeo" />
+		<put name="corpo"			value="/pages/video/emprestarVideo.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="videoDevolverVideo" extends="template">
+		<put name="tituloPagina"	value="Devolver Vídeo" />
+		<put name="corpo"			value="/pages/video/devolverVideo.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="videoRelatorios" extends="template">
+		<put name="tituloPagina"	value="Relatórios" />
+		<put name="corpo"			value="/pages/video/relatorios.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="2" />
+	</definition>
+	<definition name="videoHistoricoEmprestimos" extends="template">
+		<put name="tituloPagina"	value="Histórico dos Empréstimos" />
+		<put name="corpo"			value="/pages/video/historicoEmprestimos.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="2" />
+	</definition>
+	<definition name="videoDetalharEmprestimo" extends="template">
+		<put name="tituloPagina"	value="Detalhar Empréstimo" />
+		<put name="corpo"			value="/pages/video/detalharEmprestimo.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="2" />
+	</definition>
+	<definition name="videoEditarDevolucao" extends="template">
+		<put name="tituloPagina"	value="Editar Devolução" />
+		<put name="corpo"			value="/pages/video/editarDevolucao.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="2" />
+	</definition>
+	<definition name="videoEstatisticaEmprestimos" extends="template">
+		<put name="tituloPagina"	value="Estatística dos Empréstimos" />
+		<put name="corpo"			value="/pages/video/estatisticaEmprestimos.jsp"/>
+    	<put name="moduloAtual"		value="1" />
+    	<put name="ucAtual"			value="2" />
+	</definition>
+
+	<!-- livroCultural -->
+	<definition name="livroCulturalPesquisarLivroCultural" extends="template">
+		<put name="tituloPagina"	value="Pesquisar Livro Cultural" />
+		<put name="corpo"			value="/pages/livroCultural/pesquisarLivroCultural.jsp"/>
+    	<put name="moduloAtual"		value="2" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="livroCulturalDetalharLivroCultural" extends="template">
+		<put name="tituloPagina"	value="Detalhar Livro Cultural" />
+		<put name="corpo"			value="/pages/livroCultural/detalharLivroCultural.jsp"/>
+    	<put name="moduloAtual"		value="2" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="livroCulturalEditarLivroCultural" extends="template">
+		<put name="tituloPagina"	value="Editar Livro Cultural" />
+		<put name="corpo"			value="/pages/livroCultural/editarLivroCultural.jsp"/>
+    	<put name="moduloAtual"		value="2" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="livroCulturalEmprestarLivroCultural" extends="template">
+		<put name="tituloPagina"	value="Emprestar Livro Cultural" />
+		<put name="corpo"			value="/pages/livroCultural/emprestarLivroCultural.jsp"/>
+    	<put name="moduloAtual"		value="2" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="livroCulturalDevolverLivroCultural" extends="template">
+		<put name="tituloPagina"	value="Devolver Livro Cultural" />
+		<put name="corpo"			value="/pages/livroCultural/devolverLivroCultural.jsp"/>
+    	<put name="moduloAtual"		value="2" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="livroCulturalRelatorios" extends="template">
+		<put name="tituloPagina"	value="Relatórios" />
+		<put name="corpo"			value="/pages/livroCultural/relatorios.jsp"/>
+    	<put name="moduloAtual"		value="2" />
+    	<put name="ucAtual"			value="2" />
+	</definition>
+	<definition name="livroCulturalHistoricoEmprestimos" extends="template">
+		<put name="tituloPagina"	value="Histórico dos Empréstimos" />
+		<put name="corpo"			value="/pages/livroCultural/historicoEmprestimos.jsp"/>
+    	<put name="moduloAtual"		value="2" />
+    	<put name="ucAtual"			value="2" />
+	</definition>
+	<definition name="livroCulturalDetalharEmprestimo" extends="template">
+		<put name="tituloPagina"	value="Detalhar Empréstimo" />
+		<put name="corpo"			value="/pages/livroCultural/detalharEmprestimo.jsp"/>
+    	<put name="moduloAtual"		value="2" />
+    	<put name="ucAtual"			value="2" />
+	</definition>
+	<definition name="livroCulturalEditarDevolucao" extends="template">
+		<put name="tituloPagina"	value="Editar Devolução" />
+		<put name="corpo"			value="/pages/livroCultural/editarDevolucao.jsp"/>
+    	<put name="moduloAtual"		value="2" />
+    	<put name="ucAtual"			value="2" />
+	</definition>
+
+	<!-- filmeComercial -->
+	<definition name="filmeComercialPesquisarFilmeComercial" extends="template">
+		<put name="tituloPagina"	value="Pesquisar Filmes" />
+		<put name="corpo"			value="/pages/filmeComercial/pesquisarFilmeComercial.jsp"/>
+    	<put name="moduloAtual"		value="3" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="filmeComercialDetalharFilmeComercial" extends="template">
+		<put name="tituloPagina"	value="Detalhar Filme" />
+		<put name="corpo"			value="/pages/filmeComercial/detalharFilmeComercial.jsp"/>
+    	<put name="moduloAtual"		value="3" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="filmeComercialEditarFilmeComercial" extends="template">
+		<put name="tituloPagina"	value="Editar Filme" />
+		<put name="corpo"			value="/pages/filmeComercial/editarFilmeComercial.jsp"/>
+    	<put name="moduloAtual"		value="3" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+
+	<!-- fichaMissa -->
+	<definition name="fichaMissaPesquisarGrupoComponenteMissa" extends="template">
+		<put name="tituloPagina"	value="Pesquisar" />
+		<put name="corpo"			value="/pages/fichaMissa/pesquisarGrupoComponenteMissa.jsp"/>
+    	<put name="moduloAtual"		value="4" />
+    	<put name="ucAtual"			value="" />
+	</definition>
+	<definition name="fichaMissaEditarLiturgiaPalavra" extends="template">
+		<put name="tituloPagina"	value="Editar Liturgia da Palavra" />
+		<put name="corpo"			value="/pages/fichaMissa/editarLiturgiaPalavra.jsp"/>
+    	<put name="moduloAtual"		value="4" />
+    	<put name="ucAtual"			value="1" />
+	</definition>
+	<definition name="fichaMissaEditarOracao" extends="template">
+		<put name="tituloPagina"	value="Editar Oração" />
+		<put name="corpo"			value="/pages/fichaMissa/editarOracao.jsp"/>
+    	<put name="moduloAtual"		value="4" />
+    	<put name="ucAtual"			value="2" />
+	</definition>
+	<definition name="fichaMissaEditarComponenteMissa" extends="template">
+		<put name="tituloPagina"	value="Editar" />
+		<put name="corpo"			value="/pages/fichaMissa/editarComponenteMissa.jsp"/>
+    	<put name="moduloAtual"		value="4" />
+    	<put name="ucAtual"			value="" />
+	</definition>
+	<definition name="fichaMissaPesquisarPlanoMissa" extends="template">
+		<put name="tituloPagina"	value="Pesquisar Planos de Missa" />
+		<put name="corpo"			value="/pages/fichaMissa/pesquisarPlanoMissa.jsp"/>
+    	<put name="moduloAtual"		value="4" />
+    	<put name="ucAtual"			value="3" />
+	</definition>
+	<definition name="fichaMissaDetalharPlanoMissa" extends="template">
+		<put name="tituloPagina"	value="Detalhar Plano de Missa" />
+		<put name="corpo"			value="/pages/fichaMissa/detalharPlanoMissa.jsp"/>
+    	<put name="moduloAtual"		value="4" />
+    	<put name="ucAtual"			value="3" />
+	</definition>
+	<definition name="fichaMissaEditarPlanoMissa" extends="template">
+		<put name="tituloPagina"	value="Editar Plano de Missa" />
+		<put name="corpo"			value="/pages/fichaMissa/editarPlanoMissa.jsp"/>
+    	<put name="moduloAtual"		value="4" />
+    	<put name="ucAtual"			value="3" />
+	</definition>
+	<definition name="fichaMissaDetalharMissa" extends="template">
+		<put name="tituloPagina"	value="Detalhar Missa" />
+		<put name="corpo"			value="/pages/fichaMissa/detalharMissa.jsp"/>
+    	<put name="moduloAtual"		value="4" />
+    	<put name="ucAtual"			value="3" />
+	</definition>
+
+</tiles-definitions>

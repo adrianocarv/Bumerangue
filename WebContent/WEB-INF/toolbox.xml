@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<toolbox>
+	<tool>
+		<key>date</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.generic.DateTool</class>
+	</tool>
+	<tool>
+		<key>math</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.generic.MathTool</class>
+	</tool>
+	<tool>
+		<key>number</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.generic.NumberTool</class>
+	</tool>
+	<tool>
+		<key>render</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.generic.RenderTool</class>
+	</tool>
+	<tool>
+		<key>esc</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.generic.EscapeTool</class>
+	</tool>
+	<tool>
+		<key>parser</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.generic.ValueParser</class>
+	</tool>
+	<tool>
+		<key>sort</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.generic.SortTool</class>
+	</tool>
+	<tool>
+		<key>iter</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.generic.IteratorTool</class>
+	</tool>
+	<tool>
+		<key>cookie</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.view.tools.CookieTool</class>
+	</tool>
+	<tool>
+		<key>params</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.view.tools.ParameterParser</class>
+	</tool>
+</toolbox>
+
