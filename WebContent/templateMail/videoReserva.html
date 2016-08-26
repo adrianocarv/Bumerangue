@@ -1,0 +1,25 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>
+O vídeo <b><a href="${urlObjetoBumerangue}">${objetoBumerangue.codigo} - ${objetoBumerangue.titulo}</a></b> foi reservado para ${objetoBumerangue.emprestimoAtual.usuarioEmprestimo.nomeFormatado}.
+<br>
+Observações do Vídeo: ${objetoBumerangue.observacoesGerais}
+<br>
+Observações da reserva: ${objetoBumerangue.emprestimoAtual.observacoesReserva}
+<br>
+Quem reservou: ${objetoBumerangue.emprestimoAtual.usuarioRealizouReserva.nomeFormatado}
+<br>
+Loc. física: ${objetoBumerangue.localizacaoFisica}
+<br><br>
+<a href="${urlReal}">${url}</a><br>
+				</td>
+				<td><img src="${urlLogo}" width="78" height="61"/><br></td>
+			</tr>
+		</table>
+
+	</body>
+</html>
