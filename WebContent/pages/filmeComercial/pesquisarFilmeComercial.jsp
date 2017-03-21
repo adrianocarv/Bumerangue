@@ -151,5 +151,52 @@
 	<table class='tabelaForm'>
 		<tr><td>&nbsp;</td></tr>
 		<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;Relação de filmes cinematográficos que se distingue simultaneamente pelo critério da qualidade artística e dos conteúdos limpos: ou seja, só inclui os filmes recém-lançados mais bem cotados que, com garantia, não contém cenas inconvenientes.</td></tr>
+		<tr><td>&nbsp;</td></tr>
+
+		<!-- Mural -->
+		<c:if test="${b:isUserInRole(S_C.usuarioLogado,'7-9')}" >
+			<tr><td>
+				<h2>MURAL</h2>
+				</br><b>NOVIDADE IMPORTANTE</b>
+				</br>A partir de agora o Bumerangue manterá para download apenas os filmes incluídos nos últimos dois anos.
+				</br>A primeira exclusão de filmes será realizada no <u><b>final de junho de 2017</b></u>, incluindo os seguintes títulos:
+				<ul>
+				  <li>127 Horas</li>
+				  <li>O escritor fantasma</li>
+				  <li>O garoto da biciclete</li>
+				  <li>Grandes Olhos</li>
+				  <li>Jane Eyre</li>
+				  <li>Maktub</li>
+				  <li>No</li>
+				  <li>Noe</li>
+				  <li>Sherlok 2</li>
+				  <li>Win win</li>
+				</ul>
+			</td></tr>
+		</c:if>
+
 	</table>
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

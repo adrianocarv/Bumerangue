@@ -1,7 +1,7 @@
 package br.org.ceu.bumerangue.entity.suporte.deploy;
 
 public enum VersionEnum {
-	VERSAO("4.0.23"), DATA_VERSAO("27/11/2014");
+	VERSAO("4.0.24"), DATA_VERSAO("21/03/2017");
 
 	private String value;
 

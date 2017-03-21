@@ -47,7 +47,7 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 		/* ContextRefreshedEvent */
 		if (event instanceof ContextRefreshedEvent && ((ContextRefreshedEvent)event).getApplicationContext().equals(appContext)) {
 
-			System.out.println("\n\nEntrou no onApplicationEvent do BumerangueAppListener (versão " + VersionEnum.VERSAO.value() + " de " + VersionEnum.DATA_VERSAO.value() + ")\n\n");
+			System.out.println("\n\nEntrou no onApplicationEvent do BumerangueAppListener (versÃ£o " + VersionEnum.VERSAO.value() + " de " + VersionEnum.DATA_VERSAO.value() + ")\n\n");
     		Deploy.loadModulosDisponiveis();
 			
 //			1. cria o admin
@@ -64,13 +64,13 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 			criaElementosDominioSituacaoPlanoMissa();
 //			7. criar a view bmg_permissao_usuario_view
 			criaPermissaoUsuarioView();
-//			8. remover a notificação de que o reinício da aplicação fora necessário
+//			8. remover a notificaï¿½ï¿½o de que o reinï¿½cio da aplicaï¿½ï¿½o fora necessï¿½rio
 			removerNotificacaoNecessidadeBoot();
 		}
 	}
 
 	/**
-	 * Cria o usuário ADMIN, se este não existir.
+	 * Cria o usuï¿½rio ADMIN, se este nï¿½o existir.
 	 * @author Adriano Carvalho
 	 * @return
 	 */
@@ -80,7 +80,7 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 		if(admin == null){
 			admin = new Usuario();
 			admin.setNome(Usuario.NOME_USUARIO_ADMIN);
-			admin.setNomeCompleto("Administrador com todas as permissões admin");
+			admin.setNomeCompleto("Administrador com todas as permissï¿½es admin");
 			admin.setSenhaCript(Usuario.SENHA_PADRAO_USUARIO_ADMIN);
 
 			usuarioDao.saveOrUpdate(admin);
@@ -88,8 +88,8 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 	}
 
 	/**
-	 * Cria todas as permissões da aplicação, para as que não estejam ainda no banco de dados.<br>
-	 * Estas são definidas como constantes da classe Permissao.
+	 * Cria todas as permissï¿½es da aplicaï¿½ï¿½o, para as que nï¿½o estejam ainda no banco de dados.<br>
+	 * Estas sï¿½o definidas como constantes da classe Permissao.
 	 * @author Adriano Carvalho
 	 */
 	private void criaPermissoes(){
@@ -103,7 +103,7 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 	}
 
 	/**
-	 * Atribui todas as permissões da aplicação do tipo Admin para o usuário ADMIN, caso este não possua.
+	 * Atribui todas as permissï¿½es da aplicaï¿½ï¿½o do tipo Admin para o usuï¿½rio ADMIN, caso este nï¿½o possua.
 	 * @author Adriano Carvalho
 	 */
 	private void atribuiPermissoesAdminADMIN(){
@@ -113,8 +113,8 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 		boolean atualiza = false;
 		for(Permissao permissao : Permissao.getPermissoes()){
 			if(permissao.isAdmin()){
-				//verifica se o Admin tem a permissão, independente dos Módulos disponíveis
-				//se já tiver, não precisa adicionar.
+				//verifica se o Admin tem a permissï¿½o, independente dos Mï¿½dulos disponï¿½veis
+				//se jï¿½ tiver, nï¿½o precisa adicionar.
 				boolean jaTem = false;
 				for (Permissao permissaoAdmin : admin.getPermissoes()){
 					if(permissaoAdmin.getNome().equals(permissao.getNome())){
@@ -134,8 +134,8 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 	}
 	
 	/**
-	 * Cria todos os domínios da aplicação, para os que não estejam ainda no banco de dados.<br>
-	 * Estes são definidos como constantes da classe Dominio.
+	 * Cria todos os domï¿½nios da aplicaï¿½ï¿½o, para os que nï¿½o estejam ainda no banco de dados.<br>
+	 * Estes sï¿½o definidos como constantes da classe Dominio.
 	 * @author Adriano Carvalho
 	 */
 	private void criaDominios(){
@@ -149,14 +149,14 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 	}
 	
 	/**
-	 * Cria todos os elementos do domínio BUMERANGUE_TIPO_PERMISSAO, para os que não estejam ainda no banco de dados.<br>
-	 * Estes são definidos como constantes da classe ElementoDominio.
+	 * Cria todos os elementos do domï¿½nio BUMERANGUE_TIPO_PERMISSAO, para os que nï¿½o estejam ainda no banco de dados.<br>
+	 * Estes sï¿½o definidos como constantes da classe ElementoDominio.
 	 * @author Adriano Carvalho
 	 */
 	private void criaElementosDominioTipoPermissao(){
 		DominioDao dominioDao = (DominioDao)appContext.getBean("dominioDao");
 
-		//constantes são recuperadas de forma estática, pois não é previsto inclusões outros de tipos de permissão.
+		//constantes sï¿½o recuperadas de forma estï¿½tica, pois nï¿½o ï¿½ previsto inclusï¿½es outros de tipos de permissï¿½o.
 		List<ElementoDominio> elementosDominioTipoPermissao = new ArrayList<ElementoDominio>();
 		elementosDominioTipoPermissao.add(ElementoDominio.BUMERANGUE_TIPO_PERMISSAO_ADMIN);
 		elementosDominioTipoPermissao.add(ElementoDominio.BUMERANGUE_TIPO_PERMISSAO_AVANCADO);
@@ -183,14 +183,14 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 	}
 
 	/**
-	 * Cria todos os elemento do domínio FICHA_MISSA_SITUACAO_PLANO_MISSA, para os que não estejam ainda no banco de dados.<br>
-	 * Estes são definidos como constantes da classe ElementoDominio.
+	 * Cria todos os elemento do domï¿½nio FICHA_MISSA_SITUACAO_PLANO_MISSA, para os que nï¿½o estejam ainda no banco de dados.<br>
+	 * Estes sï¿½o definidos como constantes da classe ElementoDominio.
 	 * @author Adriano Carvalho
 	 */
 	private void criaElementosDominioSituacaoPlanoMissa(){
 		DominioDao dominioDao = (DominioDao)appContext.getBean("dominioDao");
 
-		//constantes são recuperadas de forma estática, pois não é previsto inclusões outros de tipos de permissão.
+		//constantes sï¿½o recuperadas de forma estï¿½tica, pois nï¿½o ï¿½ previsto inclusï¿½es outros de tipos de permissï¿½o.
 		List<ElementoDominio> elementosDominioSituacaoPlanoMissa = new ArrayList<ElementoDominio>();
 		elementosDominioSituacaoPlanoMissa.add(ElementoDominio.FICHA_MISSA_SITUACAO_PLANO_MISSA_EM_APROVACAO);
 		elementosDominioSituacaoPlanoMissa.add(ElementoDominio.FICHA_MISSA_SITUACAO_PLANO_MISSA_APROVADO);
@@ -216,7 +216,7 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 	}
 
 	/**
-	 * Cria a view bmg_permissao_usuario_view usada na segurança declarativa pelo containner Web.
+	 * Cria a view bmg_permissao_usuario_view usada na seguranï¿½a declarativa pelo containner Web.
 	 * @author Adriano Carvalho
 	 */
 	private void criaPermissaoUsuarioView(){
@@ -225,7 +225,7 @@ public final class BumerangueAppListener implements ApplicationListener, Applica
 	}
 
 	/**
-	 * Remove a notificação de que o reinício da aplicação fora necessário.
+	 * Remove a notificaï¿½ï¿½o de que o reinï¿½cio da aplicaï¿½ï¿½o fora necessï¿½rio.
 	 * @author Adriano Carvalho
 	 */
 	private void removerNotificacaoNecessidadeBoot(){
