@@ -31,7 +31,7 @@ b) No Servidor
   ps -ef | grep java
 
 8. Aplicar o deploy
-  cd bumerangue-deploy/
+  cd /home/adrianocarv/bumerangue-deploy/
   ./webapps.sh
 
 9. Subir o Bumerangue

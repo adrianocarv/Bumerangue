@@ -152,12 +152,17 @@
 		<tr><td>&nbsp;</td></tr>
 		<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;Relação de filmes cinematográficos que se distingue simultaneamente pelo critério da qualidade artística e dos conteúdos limpos: ou seja, só inclui os filmes recém-lançados mais bem cotados que, com garantia, não contém cenas inconvenientes.</td></tr>
 		<tr><td>&nbsp;</td></tr>
+	</table>
 
-		<!-- Mural -->
-		<c:if test="${b:isUserInRole(S_C.usuarioLogado,'7-9')}" >
-			<tr><td>
-				<h2>MURAL</h2>
-				</br><b>NOVIDADE IMPORTANTE</b>
+	<!-- Mural -->
+	<c:if test="${b:isUserInRole(S_C.usuarioLogado,'7-9')}" >
+		<table class='tabelaForm'>
+			<tr><td class="linhaFaixa">Mural</td></tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr><td class="linhaFundoTitulo">
+				<b>NOVIDADE IMPORTANTE</b>
+			</td></tr>
+			<tr><td class="linhaFundo">
 				</br>A partir de agora o Bumerangue manterá para download apenas os filmes incluídos nos últimos dois anos.
 				</br>A primeira exclusão de filmes será realizada no <u><b>final de junho de 2017</b></u>, incluindo os seguintes títulos:
 				<ul>
@@ -173,30 +178,7 @@
 				  <li>Win win</li>
 				</ul>
 			</td></tr>
-		</c:if>
+		</table>
+	</c:if>
 
-	</table>
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

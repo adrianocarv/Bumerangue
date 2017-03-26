@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<project name="Bumerangue" default="build-all">
+<project name="Bumerangue" default="deploy-producao-all">
 
 	<!-- Propriedades -->
 	<property name="web" location="../WebContent" />
