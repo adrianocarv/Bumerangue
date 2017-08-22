@@ -1,4 +1,4 @@
-a) Na IDE Spring Tool Suite
+﻿a) Na IDE Spring Tool Suite
 
 1. Abrir o STS (C:\dev\Eclipse\sts-bundle\sts-3.8.3.RELEASE\STS.exe)
 2. Alternar o workspace para sts-bumerangue (C:\dev\Eclipse - workspaces\sts-bumerangue)
@@ -47,7 +47,16 @@ b) No Servidor
 
 12.Verificar NOVAMENTE se o Bumerangue continua no ar
   bumerangue.adm.br
- 
-c) No GitHub
 
-1. Commit da nova versão
+ 
+c) No Git Shell
+
+(Excluir o conteúdo da pasta dist)
+
+cd\
+cd GitHub\Bumerangue
+
+git add .
+git commit -m "Version 4.0.26"
+git push origin master
+exit
