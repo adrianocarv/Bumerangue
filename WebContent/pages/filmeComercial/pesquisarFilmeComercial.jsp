@@ -164,18 +164,18 @@
 			</td></tr>
 			<tr><td class="linhaFundo">
 				</br>A partir de agora o Bumerangue manterá para download apenas os filmes incluídos nos últimos dois anos.
-				</br>A primeira exclusão de filmes será realizada no <u><b>final de junho de 2017</b></u>, incluindo os seguintes títulos:
+				</br>A próxima exclusão de filmes será realizada no <u><b>final de dezembro de 2017</b></u>, incluindo os seguintes títulos:
 				<ul>
-				  <li>127 Horas</li>
-				  <li>O escritor fantasma</li>
-				  <li>O garoto da biciclete</li>
-				  <li>Grandes Olhos</li>
-				  <li>Jane Eyre</li>
-				  <li>Maktub</li>
-				  <li>No</li>
-				  <li>Noe</li>
-				  <li>Sherlok 2</li>
-				  <li>Win win</li>
+					<li>A grande virada</li>
+					<li>Circuito fechado</li>
+					<li>Como um chef</li>
+					<li>Desconhecido</li>
+					<li>Elysium</li>
+					<li>Harry Potter</li>
+					<li>Hereafter</li>
+					<li>Ilha do medo</li>
+					<li>Incontrolável</li>
+					<li>Jack Reacher</li>
 				</ul>
 			</td></tr>
 		</table>
