@@ -105,7 +105,7 @@
 			<td>Atores / Observações</td>
 			<td><input type="text" size="70" name="atoresObservacoes" value="${pesquisaFilmeComercialCriteria.atoresObservacoes}" ></td>
 		</tr>
-		<c:if test="${b:isUserInRole(S_C.usuarioLogado,'7-9')}" >
+		<!--<c:if test="${b:isUserInRole(S_C.usuarioLogado,'7-9')}" >-->
 		   	<tr class='linhaFundo'>
 				<td>Disponível para download</td>
 				<c:if test="${pesquisaFilmeComercialCriteria.disponivelDownload}" >
@@ -115,7 +115,7 @@
 					<td><input type="checkbox" name="disponivelDownload" value="true"></td>
 				</c:if>
 			</tr>
-		</c:if>
+		<!--</c:if>-->
 	</table>
 	</div>
 

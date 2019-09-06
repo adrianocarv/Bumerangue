@@ -7,8 +7,8 @@
 	<property name="config.path" location="${web}/WEB-INF/config/resources" />
 	<property name="dist" location="../dist" />
 
-	<property name="ftp-server" value="192.241.180.208" />
-	<property name="ftp-port" value="25800" />
+	<property name="ftp-server" value="157.230.48.215" />
+	<property name="ftp-port" value="22" />
 	<property name="ftp-userid" value="adrianocarv" />
 	<property name="ftp-password" value="@a8859662" />
 	<property name="ftp-remotedir" value="/home/adrianocarv/bumerangue-deploy" />

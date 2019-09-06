@@ -60,10 +60,10 @@
 						</c:if>
 					</c:forEach>
 				</c:if>
-				<c:if test="${b:isUserInRole(S_C.usuarioLogado,'7-9') && filmeComercial.downloadUnico}" >
+				<!--<c:if test="${b:isUserInRole(S_C.usuarioLogado,'7-9') && filmeComercial.downloadUnico}" >-->
 					<!-- tr><td colspan="2" align="center"><a href="manterFilmeComercial.action?method=baixar&id=${filmeComercial.id}&parte=0" target="_blank"><img src="resources/img/download.jpg" /></a></td></tr -->
 					<tr><td colspan="2" align="center"><a href="${filmeComercial.linksDownload}" target="_blank"><img src="resources/img/download.jpg" /></a></td></tr>
-				</c:if>
+				<!--</c:if>-->
 			</tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr class='linhaBotao'>

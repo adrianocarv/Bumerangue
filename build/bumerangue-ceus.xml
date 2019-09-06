@@ -9,7 +9,7 @@
 		driverName="com.mysql.jdbc.Driver"
 		connectionName="bumerangue"
 		connectionPassword=""
-		connectionURL="jdbc:mysql://192.241.180.208:3306/bumerangue_ceus"
+		connectionURL="jdbc:mysql://157.230.48.215:3306/bumerangue_ceus"
 		userTable="BMG_USUARIO" userNameCol="NOME" userCredCol="SENHA"
 		userRoleTable="bmg_permissao_usuario_view" roleNameCol="nome_permissao"
 		digest="MD5"
